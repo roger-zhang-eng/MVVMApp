@@ -38,6 +38,36 @@
                ReferencedContainer = "container:MVVMApp.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "13CFB91C1E8A6A7D001BBBCB"
+               BuildableName = "MVVMAppModelsTests.xctest"
+               BlueprintName = "MVVMAppModelsTests"
+               ReferencedContainer = "container:MVVMApp.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "13CFB93F1E8A6A9C001BBBCB"
+               BuildableName = "MVVMAppViewModelsTests.xctest"
+               BlueprintName = "MVVMAppViewModelsTests"
+               ReferencedContainer = "container:MVVMApp.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "13CFB9611E8A6AB8001BBBCB"
+               BuildableName = "MVVMAppViewsTests.xctest"
+               BlueprintName = "MVVMAppViewsTests"
+               ReferencedContainer = "container:MVVMApp.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

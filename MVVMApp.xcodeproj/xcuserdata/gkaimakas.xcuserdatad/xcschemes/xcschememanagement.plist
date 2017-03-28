@@ -9,6 +9,21 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>MVVMAppModels.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>MVVMAppViewModels.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>MVVMAppViews.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -18,6 +33,36 @@
 			<true/>
 		</dict>
 		<key>13CFB9001E8A6996001BBBCB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>13CFB9141E8A6A7C001BBBCB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>13CFB91C1E8A6A7D001BBBCB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>13CFB9371E8A6A9C001BBBCB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>13CFB93F1E8A6A9C001BBBCB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>13CFB9591E8A6AB8001BBBCB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>13CFB9611E8A6AB8001BBBCB</key>
 		<dict>
 			<key>primary</key>
 			<true/>

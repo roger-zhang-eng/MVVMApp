@@ -39,6 +39,27 @@ public struct User {
         self.address = address
         self.company = company
     }
+    
+    public init(_ mo: UserMO) {
+        self.id = Int(mo.id)
+        self.name = mo.name
+        self.username = mo.username
+        self.email = mo.email
+        self.phone = mo.phone
+        self.website = mo.website
+        
+        self.address = Address(street: mo.address_street,
+                               suite: mo.address_suite,
+                               city: mo.address_city,
+                               zipCode: mo.address_zipCode,
+                               geo: Address.Geo(lat: mo.address_geo_lat as? Double,
+                                                lng: mo.address_geo_lng as? Double)
+            )
+        
+        self.company = Company(name: mo.company_name,
+                               catchPhrase: mo.company_catchPhrase,
+                               bs: mo.company_catchPhrase)
+    }
 }
 
 extension User: Decodable {

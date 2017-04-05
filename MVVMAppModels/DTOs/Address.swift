@@ -23,6 +23,13 @@ public struct Address {
             self.lng = Double(lng)
         }
         
+        public init(lat: Double?,
+                    lng: Double?) {
+            
+            self.lat = lat
+            self.lng = lng
+        }
+        
     }
     
     public let street: String?

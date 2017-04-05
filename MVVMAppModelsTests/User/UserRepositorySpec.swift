@@ -21,7 +21,7 @@ public class UserRepositorySpec: QuickSpec {
     override public func spec() {
         super.spec()
         
-        let local = UserLocalRepository()
+        let local = UserLocalRepository(container: DataContainer(name: "UserRepositorySpec"))
         let remote = UserRemoteRepository()
         let provider = UserRepository(localProvider: local, remoteProvider: remote)
         

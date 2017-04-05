@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		134272681E8D347400E63D10 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134272671E8D347400E63D10 /* Post.swift */; };
+		1342726C1E8D384B00E63D10 /* Post+ArgoSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342726B1E8D384B00E63D10 /* Post+ArgoSpec.swift */; };
+		134272711E8D396500E63D10 /* PostRemoteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134272701E8D396500E63D10 /* PostRemoteRepository.swift */; };
+		134272731E8D39A900E63D10 /* PostRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134272721E8D39A900E63D10 /* PostRouter.swift */; };
+		1390D6A01E94D8D500F67D82 /* PostLocalRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390D69F1E94D8D500F67D82 /* PostLocalRepository.swift */; };
+		1390D6A21E94D8F000F67D82 /* PostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390D6A11E94D8F000F67D82 /* PostRepository.swift */; };
+		1390D6A41E94E1EB00F67D82 /* ProviderError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390D6A31E94E1EB00F67D82 /* ProviderError.swift */; };
 		13CFB8F11E8A6996001BBBCB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CFB8F01E8A6996001BBBCB /* AppDelegate.swift */; };
 		13CFB8F31E8A6996001BBBCB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CFB8F21E8A6996001BBBCB /* ViewController.swift */; };
 		13CFB8F61E8A6996001BBBCB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13CFB8F41E8A6996001BBBCB /* Main.storyboard */; };
@@ -144,6 +151,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		134272671E8D347400E63D10 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		1342726B1E8D384B00E63D10 /* Post+ArgoSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Post+ArgoSpec.swift"; sourceTree = "<group>"; };
+		134272701E8D396500E63D10 /* PostRemoteRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostRemoteRepository.swift; sourceTree = "<group>"; };
+		134272721E8D39A900E63D10 /* PostRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostRouter.swift; sourceTree = "<group>"; };
+		1390D69F1E94D8D500F67D82 /* PostLocalRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostLocalRepository.swift; sourceTree = "<group>"; };
+		1390D6A11E94D8F000F67D82 /* PostRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostRepository.swift; sourceTree = "<group>"; };
+		1390D6A31E94E1EB00F67D82 /* ProviderError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderError.swift; sourceTree = "<group>"; };
 		13CFB8ED1E8A6996001BBBCB /* MVVMApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVVMApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13CFB8F01E8A6996001BBBCB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		13CFB8F21E8A6996001BBBCB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -274,6 +288,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		134272661E8D327600E63D10 /* DTOs */ = {
+			isa = PBXGroup;
+			children = (
+				134272671E8D347400E63D10 /* Post.swift */,
+			);
+			path = DTOs;
+			sourceTree = "<group>";
+		};
+		1342726D1E8D391E00E63D10 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				1342726E1E8D392B00E63D10 /* Post */,
+				1390D6A31E94E1EB00F67D82 /* ProviderError.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		1342726E1E8D392B00E63D10 /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				1390D6A11E94D8F000F67D82 /* PostRepository.swift */,
+				1390D69F1E94D8D500F67D82 /* PostLocalRepository.swift */,
+				134272701E8D396500E63D10 /* PostRemoteRepository.swift */,
+				134272721E8D39A900E63D10 /* PostRouter.swift */,
+			);
+			path = Post;
+			sourceTree = "<group>";
+		};
 		13CFB8E41E8A6995001BBBCB = {
 			isa = PBXGroup;
 			children = (
@@ -328,6 +370,8 @@
 		13CFB9161E8A6A7C001BBBCB /* MVVMAppModels */ = {
 			isa = PBXGroup;
 			children = (
+				1342726D1E8D391E00E63D10 /* API */,
+				134272661E8D327600E63D10 /* DTOs */,
 				13CFB9171E8A6A7C001BBBCB /* MVVMAppModels.h */,
 				13CFB9181E8A6A7C001BBBCB /* Info.plist */,
 			);
@@ -339,6 +383,7 @@
 			children = (
 				13CFB9241E8A6A7D001BBBCB /* MVVMAppModelsTests.swift */,
 				13CFB9261E8A6A7D001BBBCB /* Info.plist */,
+				1342726B1E8D384B00E63D10 /* Post+ArgoSpec.swift */,
 			);
 			path = MVVMAppModelsTests;
 			sourceTree = "<group>";
@@ -655,6 +700,7 @@
 					13CFB9141E8A6A7C001BBBCB = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 96LJ93WQBU;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 					13CFB91C1E8A6A7D001BBBCB = {
@@ -1114,6 +1160,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				134272681E8D347400E63D10 /* Post.swift in Sources */,
+				1390D6A21E94D8F000F67D82 /* PostRepository.swift in Sources */,
+				1390D6A01E94D8D500F67D82 /* PostLocalRepository.swift in Sources */,
+				1390D6A41E94E1EB00F67D82 /* ProviderError.swift in Sources */,
+				134272731E8D39A900E63D10 /* PostRouter.swift in Sources */,
+				134272711E8D396500E63D10 /* PostRemoteRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1122,6 +1174,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13CFB9251E8A6A7D001BBBCB /* MVVMAppModelsTests.swift in Sources */,
+				1342726C1E8D384B00E63D10 /* Post+ArgoSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1335,6 +1388,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 29739CEE8970776181106416 /* Pods-MVVMApp.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 96LJ93WQBU;
 				INFOPLIST_FILE = MVVMApp/Info.plist;
@@ -1350,6 +1404,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 363701BF664A9DB1B697B93C /* Pods-MVVMApp.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 96LJ93WQBU;
 				INFOPLIST_FILE = MVVMApp/Info.plist;
@@ -1397,6 +1452,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 218FE4828E3AAEADCA009779 /* Pods-MVVMAppModels.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -1410,6 +1466,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.gkaimakas.mvvm.app.models;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1421,6 +1478,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1C1BD72CE31AF275D97169D3 /* Pods-MVVMAppModels.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -1646,6 +1704,7 @@
 				13CFB90C1E8A6996001BBBCB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		13CFB90D1E8A6996001BBBCB /* Build configuration list for PBXNativeTarget "MVVMAppTests" */ = {
 			isa = XCConfigurationList;
@@ -1654,6 +1713,7 @@
 				13CFB90F1E8A6996001BBBCB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		13CFB92C1E8A6A7D001BBBCB /* Build configuration list for PBXNativeTarget "MVVMAppModels" */ = {
 			isa = XCConfigurationList;
@@ -1662,6 +1722,7 @@
 				13CFB92E1E8A6A7D001BBBCB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		13CFB9301E8A6A7D001BBBCB /* Build configuration list for PBXNativeTarget "MVVMAppModelsTests" */ = {
 			isa = XCConfigurationList;
@@ -1670,6 +1731,7 @@
 				13CFB9321E8A6A7D001BBBCB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		13CFB94F1E8A6A9C001BBBCB /* Build configuration list for PBXNativeTarget "MVVMAppViewModels" */ = {
 			isa = XCConfigurationList;
@@ -1678,6 +1740,7 @@
 				13CFB9511E8A6A9C001BBBCB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		13CFB9521E8A6A9C001BBBCB /* Build configuration list for PBXNativeTarget "MVVMAppViewModelsTests" */ = {
 			isa = XCConfigurationList;
@@ -1686,6 +1749,7 @@
 				13CFB9541E8A6A9C001BBBCB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		13CFB9711E8A6AB8001BBBCB /* Build configuration list for PBXNativeTarget "MVVMAppViews" */ = {
 			isa = XCConfigurationList;
@@ -1694,6 +1758,7 @@
 				13CFB9731E8A6AB8001BBBCB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		13CFB9741E8A6AB8001BBBCB /* Build configuration list for PBXNativeTarget "MVVMAppViewsTests" */ = {
 			isa = XCConfigurationList;
@@ -1702,6 +1767,7 @@
 				13CFB9761E8A6AB8001BBBCB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

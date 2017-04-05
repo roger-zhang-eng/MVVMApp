@@ -3,67 +3,85 @@
 
 target 'MVVMApp' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
-  use_frameworks!
+    use_frameworks!
 
-  pod 'Alamofire'
-  pod 'ReactiveCocoa'
-  pod 'ReactiveSwift'
-  pod 'Swinject'
+    pod 'Alamofire'
+    pod 'AlamofireReactiveExtensions'
+    pod 'Argo'
+    pod 'Curry'
+    pod 'ReactiveCocoa'
+    pod 'ReactiveSwift'
+    pod 'Swinject'
 
-  # Pods for MVVMApp
+    # Pods for MVVMApp
 
-  target 'MVVMAppTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
+    target 'MVVMAppTests' do
+        inherit! :search_paths
+        # Pods for testing
+        
+        pod 'Quick'
+        pod 'Nimble'
+    end
 
 end
 
 target 'MVVMAppModels' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
-  use_frameworks!
+    use_frameworks!
 
-  pod 'Alamofire'
-  pod 'ReactiveCocoa'
-  pod 'ReactiveSwift'
+    pod 'Alamofire'
+    pod 'AlamofireReactiveExtensions'
+    pod 'Argo'
+    pod 'Curry'
+    pod 'ReactiveCocoa'
+    pod 'ReactiveSwift'
 
-  # Pods for MVVMAppModels
+    # Pods for MVVMAppModels
 
-  target 'MVVMAppModelsTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
+    target 'MVVMAppModelsTests' do
+        inherit! :search_paths
+        # Pods for testing
+        
+        pod 'Quick'
+        pod 'Nimble'
+    end
 
 end
 
 target 'MVVMAppViewModels' do
-  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
-  use_frameworks!
+    # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+    use_frameworks!
 
-  pod 'ReactiveCocoa'
-  pod 'ReactiveSwift'
+    pod 'ReactiveCocoa'
+    pod 'ReactiveSwift'
   
-  # Pods for MVVMAppViewModels
+    # Pods for MVVMAppViewModels
 
-  target 'MVVMAppViewModelsTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
+    target 'MVVMAppViewModelsTests' do
+        inherit! :search_paths
+        # Pods for testing
+        
+        pod 'Quick'
+        pod 'Nimble'
+    end
 
 end
 
 target 'MVVMAppViews' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
-  use_frameworks!
+    use_frameworks!
 
-  pod 'ReactiveCocoa'
-  pod 'ReactiveSwift'
+    pod 'ReactiveCocoa'
+    pod 'ReactiveSwift'
 
-  # Pods for MVVMAppViews
+    # Pods for MVVMAppViews
 
-  target 'MVVMAppViewsTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
+    target 'MVVMAppViewsTests' do
+      inherit! :search_paths
+      # Pods for testing
+      
+      pod 'Quick'
+      pod 'Nimble'
+    end
 
 end

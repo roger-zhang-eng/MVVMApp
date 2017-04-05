@@ -27,6 +27,13 @@ public struct Post {
         self.title = title
         self.body = body
     }
+    
+    public init(_ mo: PostMO) {
+        self.id = Int(mo.id)
+        self.userId = Int(mo.userId)
+        self.title = mo.title
+        self.body = mo.body
+    }
 }
 
 extension Post: Decodable {

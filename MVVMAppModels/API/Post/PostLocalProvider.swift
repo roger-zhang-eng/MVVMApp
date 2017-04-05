@@ -6,6 +6,7 @@
 //  Copyright © 2017 George Kaimakas. All rights reserved.
 //
 
+import CoreData
 import Foundation
 import ReactiveSwift
 import Result
@@ -18,8 +19,11 @@ public protocol PostLocalProvider {
 }
 
 public class PostLocalRepository: PostLocalProvider {
-    public init() {
+    private let container: DataContainer
+    
+    public init(container: DataContainer) {
         
+        self.container = container
     }
     
     public func fetchPost(id: Int) -> SignalProducer<Post, ProviderError> {
@@ -31,6 +35,15 @@ public class PostLocalRepository: PostLocalProvider {
     }
     
     public func save(post: Post) -> SignalProducer<Post, ProviderError> {
-        return SignalProducer.init(value: Post(id: 0, userId: 0, title: nil, body: nil))
+        return SignalProducer<PostMO, NSError>.attempt { () -> Result<PostMO, NSError> in
+                return Result<PostMO, NSError>(attempt: { () -> PostMO in
+                    let postMO: PostMO = self.container.newObject(type: PostMO.self)
+                    postMO.inflate(post: post)
+                    try self.container.viewContext.save()
+                    return postMO
+                })
+            }
+            .map { Post($0) }
+            .mapError { ProviderError.local(.persistenceFailure($0)) }
     }
 }

@@ -29,7 +29,8 @@ public class UserRepository: UserProvider {
     }
     
     public func fetchUser(id: Int) -> SignalProducer<User, ProviderError> {
-        return localProvider.fetchUser(id: id)
+        return localProvider
+            .fetchUser(id: id)
             .flatMapError { (error: ProviderError) -> SignalProducer<User, ProviderError> in
                 return self.remoteProvider
                     .fetchUser(id: id)

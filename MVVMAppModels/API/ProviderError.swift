@@ -17,5 +17,6 @@ public enum ProviderError: Swift.Error {
 
 public enum LocalProviderError: Swift.Error {
     case notFound
-    case persistence(NSError)
+    case alreadyExists
+    case persistenceFailure(NSError)
 }

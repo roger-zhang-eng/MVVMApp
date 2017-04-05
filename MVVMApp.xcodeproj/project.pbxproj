@@ -8,12 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		134272681E8D347400E63D10 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134272671E8D347400E63D10 /* Post.swift */; };
-		1342726C1E8D384B00E63D10 /* Post+ArgoSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342726B1E8D384B00E63D10 /* Post+ArgoSpec.swift */; };
-		134272711E8D396500E63D10 /* PostRemoteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134272701E8D396500E63D10 /* PostRemoteRepository.swift */; };
+		134272711E8D396500E63D10 /* PostRemoteProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134272701E8D396500E63D10 /* PostRemoteProvider.swift */; };
 		134272731E8D39A900E63D10 /* PostRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134272721E8D39A900E63D10 /* PostRouter.swift */; };
-		1390D6A01E94D8D500F67D82 /* PostLocalRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390D69F1E94D8D500F67D82 /* PostLocalRepository.swift */; };
-		1390D6A21E94D8F000F67D82 /* PostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390D6A11E94D8F000F67D82 /* PostRepository.swift */; };
+		1390D6A01E94D8D500F67D82 /* PostLocalProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390D69F1E94D8D500F67D82 /* PostLocalProvider.swift */; };
+		1390D6A21E94D8F000F67D82 /* PostProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390D6A11E94D8F000F67D82 /* PostProvider.swift */; };
 		1390D6A41E94E1EB00F67D82 /* ProviderError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390D6A31E94E1EB00F67D82 /* ProviderError.swift */; };
+		1390D6A71E94FCCD00F67D82 /* SignalProducer+ProviderError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390D6A61E94FCCD00F67D82 /* SignalProducer+ProviderError.swift */; };
+		1390D6AA1E95104300F67D82 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390D6A91E95104300F67D82 /* User.swift */; };
+		1390D6AC1E95108A00F67D82 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390D6AB1E95108A00F67D82 /* Address.swift */; };
+		1390D6B01E95110300F67D82 /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390D6AF1E95110300F67D82 /* Company.swift */; };
+		1390D6B21E95142600F67D82 /* UserRemoteProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390D6B11E95142600F67D82 /* UserRemoteProvider.swift */; };
+		1390D6B41E95148400F67D82 /* UserRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390D6B31E95148400F67D82 /* UserRouter.swift */; };
+		1390D6B71E95158800F67D82 /* UserRemoteRepositorySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390D6B61E95158800F67D82 /* UserRemoteRepositorySpec.swift */; };
+		1390D6B91E951A4D00F67D82 /* UserLocalProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390D6B81E951A4D00F67D82 /* UserLocalProvider.swift */; };
+		1390D6BB1E951BA200F67D82 /* UserProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390D6BA1E951BA200F67D82 /* UserProvider.swift */; };
+		1390D6BD1E951D0000F67D82 /* UserRepositorySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390D6BC1E951D0000F67D82 /* UserRepositorySpec.swift */; };
 		13CFB8F11E8A6996001BBBCB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CFB8F01E8A6996001BBBCB /* AppDelegate.swift */; };
 		13CFB8F31E8A6996001BBBCB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CFB8F21E8A6996001BBBCB /* ViewController.swift */; };
 		13CFB8F61E8A6996001BBBCB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13CFB8F41E8A6996001BBBCB /* Main.storyboard */; };
@@ -21,7 +30,6 @@
 		13CFB8FB1E8A6996001BBBCB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13CFB8F91E8A6996001BBBCB /* LaunchScreen.storyboard */; };
 		13CFB9061E8A6996001BBBCB /* MVVMAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CFB9051E8A6996001BBBCB /* MVVMAppTests.swift */; };
 		13CFB91E1E8A6A7D001BBBCB /* MVVMAppModels.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13CFB9151E8A6A7C001BBBCB /* MVVMAppModels.framework */; };
-		13CFB9251E8A6A7D001BBBCB /* MVVMAppModelsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CFB9241E8A6A7D001BBBCB /* MVVMAppModelsTests.swift */; };
 		13CFB9271E8A6A7D001BBBCB /* MVVMAppModels.h in Headers */ = {isa = PBXBuildFile; fileRef = 13CFB9171E8A6A7C001BBBCB /* MVVMAppModels.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		13CFB92A1E8A6A7D001BBBCB /* MVVMAppModels.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13CFB9151E8A6A7C001BBBCB /* MVVMAppModels.framework */; };
 		13CFB92B1E8A6A7D001BBBCB /* MVVMAppModels.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 13CFB9151E8A6A7C001BBBCB /* MVVMAppModels.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -152,12 +160,21 @@
 
 /* Begin PBXFileReference section */
 		134272671E8D347400E63D10 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
-		1342726B1E8D384B00E63D10 /* Post+ArgoSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Post+ArgoSpec.swift"; sourceTree = "<group>"; };
-		134272701E8D396500E63D10 /* PostRemoteRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostRemoteRepository.swift; sourceTree = "<group>"; };
+		134272701E8D396500E63D10 /* PostRemoteProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostRemoteProvider.swift; sourceTree = "<group>"; };
 		134272721E8D39A900E63D10 /* PostRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostRouter.swift; sourceTree = "<group>"; };
-		1390D69F1E94D8D500F67D82 /* PostLocalRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostLocalRepository.swift; sourceTree = "<group>"; };
-		1390D6A11E94D8F000F67D82 /* PostRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostRepository.swift; sourceTree = "<group>"; };
+		1390D69F1E94D8D500F67D82 /* PostLocalProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostLocalProvider.swift; sourceTree = "<group>"; };
+		1390D6A11E94D8F000F67D82 /* PostProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostProvider.swift; sourceTree = "<group>"; };
 		1390D6A31E94E1EB00F67D82 /* ProviderError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderError.swift; sourceTree = "<group>"; };
+		1390D6A61E94FCCD00F67D82 /* SignalProducer+ProviderError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SignalProducer+ProviderError.swift"; sourceTree = "<group>"; };
+		1390D6A91E95104300F67D82 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		1390D6AB1E95108A00F67D82 /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		1390D6AF1E95110300F67D82 /* Company.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
+		1390D6B11E95142600F67D82 /* UserRemoteProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRemoteProvider.swift; sourceTree = "<group>"; };
+		1390D6B31E95148400F67D82 /* UserRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRouter.swift; sourceTree = "<group>"; };
+		1390D6B61E95158800F67D82 /* UserRemoteRepositorySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRemoteRepositorySpec.swift; sourceTree = "<group>"; };
+		1390D6B81E951A4D00F67D82 /* UserLocalProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLocalProvider.swift; sourceTree = "<group>"; };
+		1390D6BA1E951BA200F67D82 /* UserProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProvider.swift; sourceTree = "<group>"; };
+		1390D6BC1E951D0000F67D82 /* UserRepositorySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRepositorySpec.swift; sourceTree = "<group>"; };
 		13CFB8ED1E8A6996001BBBCB /* MVVMApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVVMApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13CFB8F01E8A6996001BBBCB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		13CFB8F21E8A6996001BBBCB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -172,7 +189,6 @@
 		13CFB9171E8A6A7C001BBBCB /* MVVMAppModels.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MVVMAppModels.h; sourceTree = "<group>"; };
 		13CFB9181E8A6A7C001BBBCB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		13CFB91D1E8A6A7D001BBBCB /* MVVMAppModelsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MVVMAppModelsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		13CFB9241E8A6A7D001BBBCB /* MVVMAppModelsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVMAppModelsTests.swift; sourceTree = "<group>"; };
 		13CFB9261E8A6A7D001BBBCB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		13CFB9381E8A6A9C001BBBCB /* MVVMAppViewModels.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MVVMAppViewModels.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		13CFB93A1E8A6A9C001BBBCB /* MVVMAppViewModels.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MVVMAppViewModels.h; sourceTree = "<group>"; };
@@ -292,6 +308,9 @@
 			isa = PBXGroup;
 			children = (
 				134272671E8D347400E63D10 /* Post.swift */,
+				1390D6A91E95104300F67D82 /* User.swift */,
+				1390D6AB1E95108A00F67D82 /* Address.swift */,
+				1390D6AF1E95110300F67D82 /* Company.swift */,
 			);
 			path = DTOs;
 			sourceTree = "<group>";
@@ -299,6 +318,7 @@
 		1342726D1E8D391E00E63D10 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				1390D6A81E95102E00F67D82 /* User */,
 				1342726E1E8D392B00E63D10 /* Post */,
 				1390D6A31E94E1EB00F67D82 /* ProviderError.swift */,
 			);
@@ -308,12 +328,40 @@
 		1342726E1E8D392B00E63D10 /* Post */ = {
 			isa = PBXGroup;
 			children = (
-				1390D6A11E94D8F000F67D82 /* PostRepository.swift */,
-				1390D69F1E94D8D500F67D82 /* PostLocalRepository.swift */,
-				134272701E8D396500E63D10 /* PostRemoteRepository.swift */,
+				1390D6A11E94D8F000F67D82 /* PostProvider.swift */,
+				1390D69F1E94D8D500F67D82 /* PostLocalProvider.swift */,
+				134272701E8D396500E63D10 /* PostRemoteProvider.swift */,
 				134272721E8D39A900E63D10 /* PostRouter.swift */,
 			);
 			path = Post;
+			sourceTree = "<group>";
+		};
+		1390D6A51E94FCA900F67D82 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1390D6A61E94FCCD00F67D82 /* SignalProducer+ProviderError.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		1390D6A81E95102E00F67D82 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				1390D6BA1E951BA200F67D82 /* UserProvider.swift */,
+				1390D6B81E951A4D00F67D82 /* UserLocalProvider.swift */,
+				1390D6B11E95142600F67D82 /* UserRemoteProvider.swift */,
+				1390D6B31E95148400F67D82 /* UserRouter.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		1390D6B51E95156700F67D82 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				1390D6BC1E951D0000F67D82 /* UserRepositorySpec.swift */,
+				1390D6B61E95158800F67D82 /* UserRemoteRepositorySpec.swift */,
+			);
+			path = User;
 			sourceTree = "<group>";
 		};
 		13CFB8E41E8A6995001BBBCB = {
@@ -370,6 +418,7 @@
 		13CFB9161E8A6A7C001BBBCB /* MVVMAppModels */ = {
 			isa = PBXGroup;
 			children = (
+				1390D6A51E94FCA900F67D82 /* Extensions */,
 				1342726D1E8D391E00E63D10 /* API */,
 				134272661E8D327600E63D10 /* DTOs */,
 				13CFB9171E8A6A7C001BBBCB /* MVVMAppModels.h */,
@@ -381,9 +430,8 @@
 		13CFB9231E8A6A7D001BBBCB /* MVVMAppModelsTests */ = {
 			isa = PBXGroup;
 			children = (
-				13CFB9241E8A6A7D001BBBCB /* MVVMAppModelsTests.swift */,
+				1390D6B51E95156700F67D82 /* User */,
 				13CFB9261E8A6A7D001BBBCB /* Info.plist */,
-				1342726B1E8D384B00E63D10 /* Post+ArgoSpec.swift */,
 			);
 			path = MVVMAppModelsTests;
 			sourceTree = "<group>";
@@ -1160,12 +1208,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1390D6B91E951A4D00F67D82 /* UserLocalProvider.swift in Sources */,
+				1390D6AC1E95108A00F67D82 /* Address.swift in Sources */,
 				134272681E8D347400E63D10 /* Post.swift in Sources */,
-				1390D6A21E94D8F000F67D82 /* PostRepository.swift in Sources */,
-				1390D6A01E94D8D500F67D82 /* PostLocalRepository.swift in Sources */,
+				1390D6B21E95142600F67D82 /* UserRemoteProvider.swift in Sources */,
+				1390D6A21E94D8F000F67D82 /* PostProvider.swift in Sources */,
+				1390D6B01E95110300F67D82 /* Company.swift in Sources */,
+				1390D6A01E94D8D500F67D82 /* PostLocalProvider.swift in Sources */,
 				1390D6A41E94E1EB00F67D82 /* ProviderError.swift in Sources */,
+				1390D6B41E95148400F67D82 /* UserRouter.swift in Sources */,
+				1390D6AA1E95104300F67D82 /* User.swift in Sources */,
 				134272731E8D39A900E63D10 /* PostRouter.swift in Sources */,
-				134272711E8D396500E63D10 /* PostRemoteRepository.swift in Sources */,
+				1390D6BB1E951BA200F67D82 /* UserProvider.swift in Sources */,
+				134272711E8D396500E63D10 /* PostRemoteProvider.swift in Sources */,
+				1390D6A71E94FCCD00F67D82 /* SignalProducer+ProviderError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1173,8 +1229,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				13CFB9251E8A6A7D001BBBCB /* MVVMAppModelsTests.swift in Sources */,
-				1342726C1E8D384B00E63D10 /* Post+ArgoSpec.swift in Sources */,
+				1390D6B71E95158800F67D82 /* UserRemoteRepositorySpec.swift in Sources */,
+				1390D6BD1E951D0000F67D82 /* UserRepositorySpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

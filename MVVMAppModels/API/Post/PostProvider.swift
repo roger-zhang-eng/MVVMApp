@@ -8,7 +8,6 @@
 
 import Foundation
 import ReactiveSwift
-import ReactiveSwift
 import Result
 
 public protocol PostProvider {

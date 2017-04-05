@@ -12,5 +12,10 @@ import Argo
 public enum ProviderError: Swift.Error {
     case remote(Error)
     case decode(DecodeError)
-    case local(NSError)
+    case local(LocalProviderError)
+}
+
+public enum LocalProviderError: Swift.Error {
+    case notFound
+    case persistence(NSError)
 }

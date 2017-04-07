@@ -26,8 +26,8 @@ public class UserLocalRepositorySpec: QuickSpec {
         describe("save(user:_)"){
             it("should save a user") {
                 var user: User! = nil
-                let geo = Address.Geo(lat: 20,
-                    lng: 23)
+                let location = Location(latitude: 20,
+                    longitude: 23)
                 let newUser = User(id: 0,
                                    name: "\(arc4random_uniform(1000))",
                                    username: "\(arc4random_uniform(1000))",
@@ -38,7 +38,7 @@ public class UserLocalRepositorySpec: QuickSpec {
                                         suite: "\(arc4random_uniform(1000))",
                                         city: "\(arc4random_uniform(1000))",
                                         zipCode: "\(arc4random_uniform(1000))",
-                                        geo: geo),
+                                        location: location),
                                    company: Company(name: "\(arc4random_uniform(1000))",
                                         catchPhrase: "\(arc4random_uniform(1000))",
                                         bs: "\(arc4random_uniform(1000))"))

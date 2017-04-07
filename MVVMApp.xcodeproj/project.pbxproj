@@ -29,6 +29,7 @@
 		1390D6C61E9529C600F67D82 /* PostMO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390D6C51E9529C600F67D82 /* PostMO.swift */; };
 		1390D6C91E952CD600F67D82 /* PostLocalRepositorySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390D6C81E952CD600F67D82 /* PostLocalRepositorySpec.swift */; };
 		1390D6CB1E95325700F67D82 /* UserMO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390D6CA1E95325700F67D82 /* UserMO.swift */; };
+		13C6C0681E97C96D00F6478F /* CommentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C6C0671E97C96D00F6478F /* CommentProvider.swift */; };
 		13CFB8F11E8A6996001BBBCB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CFB8F01E8A6996001BBBCB /* AppDelegate.swift */; };
 		13CFB8F31E8A6996001BBBCB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CFB8F21E8A6996001BBBCB /* ViewController.swift */; };
 		13CFB8F61E8A6996001BBBCB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13CFB8F41E8A6996001BBBCB /* Main.storyboard */; };
@@ -51,6 +52,18 @@
 		13CFB9701E8A6AB8001BBBCB /* MVVMAppViews.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 13CFB95A1E8A6AB8001BBBCB /* MVVMAppViews.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		13CFB97A1E8A6B7F001BBBCB /* MVVMAppModels.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13CFB9151E8A6A7C001BBBCB /* MVVMAppModels.framework */; };
 		13CFB97D1E8A6B87001BBBCB /* MVVMAppViewModels.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13CFB9381E8A6A9C001BBBCB /* MVVMAppViewModels.framework */; };
+		13ED126E1E97B741002E6715 /* PostListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13ED126D1E97B741002E6715 /* PostListViewModel.swift */; };
+		13ED12701E97B7D1002E6715 /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13ED126F1E97B7D1002E6715 /* PostViewModel.swift */; };
+		13ED12721E97B850002E6715 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13ED12711E97B850002E6715 /* UserViewModel.swift */; };
+		13ED12741E97B958002E6715 /* AddressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13ED12731E97B958002E6715 /* AddressViewModel.swift */; };
+		13ED12761E97B967002E6715 /* CompanyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13ED12751E97B967002E6715 /* CompanyViewModel.swift */; };
+		13ED12781E97BA57002E6715 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13ED12771E97BA57002E6715 /* Location.swift */; };
+		13ED127A1E97BC5A002E6715 /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13ED12791E97BC5A002E6715 /* LocationViewModel.swift */; };
+		13ED127D1E97BE86002E6715 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13ED127C1E97BE86002E6715 /* Comment.swift */; };
+		13ED127F1E97BFDC002E6715 /* CommentMO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13ED127E1E97BFDC002E6715 /* CommentMO.swift */; };
+		13ED12811E97C0DC002E6715 /* CommentLocalProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13ED12801E97C0DC002E6715 /* CommentLocalProvider.swift */; };
+		13ED12831E97C51B002E6715 /* CommentRemoteProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13ED12821E97C51B002E6715 /* CommentRemoteProvider.swift */; };
+		13ED12851E97C524002E6715 /* CommentRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13ED12841E97C524002E6715 /* CommentRouter.swift */; };
 		47D41AD5F9FF880C71B494A9 /* Pods_MVVMAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 951F4EA5C7AAB945C0C884C9 /* Pods_MVVMAppTests.framework */; };
 		480BF1C737D09030A7F701CD /* Pods_MVVMAppViews.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA1454D02B11F4DFB9EF09F /* Pods_MVVMAppViews.framework */; };
 		62053F7C0BC2D5DEF979AB86 /* Pods_MVVMAppModels.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6AF68BCB67A45890153F19B /* Pods_MVVMAppModels.framework */; };
@@ -187,6 +200,7 @@
 		1390D6C51E9529C600F67D82 /* PostMO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostMO.swift; sourceTree = "<group>"; };
 		1390D6C81E952CD600F67D82 /* PostLocalRepositorySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostLocalRepositorySpec.swift; sourceTree = "<group>"; };
 		1390D6CA1E95325700F67D82 /* UserMO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserMO.swift; sourceTree = "<group>"; };
+		13C6C0671E97C96D00F6478F /* CommentProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentProvider.swift; sourceTree = "<group>"; };
 		13CFB8ED1E8A6996001BBBCB /* MVVMApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVVMApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13CFB8F01E8A6996001BBBCB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		13CFB8F21E8A6996001BBBCB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -214,6 +228,18 @@
 		13CFB9621E8A6AB8001BBBCB /* MVVMAppViewsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MVVMAppViewsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		13CFB9691E8A6AB8001BBBCB /* MVVMAppViewsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVMAppViewsTests.swift; sourceTree = "<group>"; };
 		13CFB96B1E8A6AB8001BBBCB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		13ED126D1E97B741002E6715 /* PostListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostListViewModel.swift; sourceTree = "<group>"; };
+		13ED126F1E97B7D1002E6715 /* PostViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
+		13ED12711E97B850002E6715 /* UserViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		13ED12731E97B958002E6715 /* AddressViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressViewModel.swift; sourceTree = "<group>"; };
+		13ED12751E97B967002E6715 /* CompanyViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompanyViewModel.swift; sourceTree = "<group>"; };
+		13ED12771E97BA57002E6715 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		13ED12791E97BC5A002E6715 /* LocationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
+		13ED127C1E97BE86002E6715 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		13ED127E1E97BFDC002E6715 /* CommentMO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentMO.swift; sourceTree = "<group>"; };
+		13ED12801E97C0DC002E6715 /* CommentLocalProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentLocalProvider.swift; sourceTree = "<group>"; };
+		13ED12821E97C51B002E6715 /* CommentRemoteProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentRemoteProvider.swift; sourceTree = "<group>"; };
+		13ED12841E97C524002E6715 /* CommentRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentRouter.swift; sourceTree = "<group>"; };
 		1C1BD72CE31AF275D97169D3 /* Pods-MVVMAppModels.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMAppModels.release.xcconfig"; path = "Pods/Target Support Files/Pods-MVVMAppModels/Pods-MVVMAppModels.release.xcconfig"; sourceTree = "<group>"; };
 		1F91412321AB0D7E5D14CA70 /* Pods-MVVMAppModelsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMAppModelsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MVVMAppModelsTests/Pods-MVVMAppModelsTests.release.xcconfig"; sourceTree = "<group>"; };
 		218FE4828E3AAEADCA009779 /* Pods-MVVMAppModels.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMAppModels.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MVVMAppModels/Pods-MVVMAppModels.debug.xcconfig"; sourceTree = "<group>"; };
@@ -323,6 +349,8 @@
 				1390D6A91E95104300F67D82 /* User.swift */,
 				1390D6AB1E95108A00F67D82 /* Address.swift */,
 				1390D6AF1E95110300F67D82 /* Company.swift */,
+				13ED12771E97BA57002E6715 /* Location.swift */,
+				13ED127C1E97BE86002E6715 /* Comment.swift */,
 			);
 			path = DTOs;
 			sourceTree = "<group>";
@@ -330,6 +358,7 @@
 		1342726D1E8D391E00E63D10 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				13ED127B1E97BE50002E6715 /* Comment */,
 				1390D6A81E95102E00F67D82 /* User */,
 				1342726E1E8D392B00E63D10 /* Post */,
 				1390D6A31E94E1EB00F67D82 /* ProviderError.swift */,
@@ -392,6 +421,7 @@
 			children = (
 				1390D6C51E9529C600F67D82 /* PostMO.swift */,
 				1390D6CA1E95325700F67D82 /* UserMO.swift */,
+				13ED127E1E97BFDC002E6715 /* CommentMO.swift */,
 			);
 			path = ManagedObjects;
 			sourceTree = "<group>";
@@ -483,6 +513,12 @@
 			children = (
 				13CFB93A1E8A6A9C001BBBCB /* MVVMAppViewModels.h */,
 				13CFB93B1E8A6A9C001BBBCB /* Info.plist */,
+				13ED126D1E97B741002E6715 /* PostListViewModel.swift */,
+				13ED126F1E97B7D1002E6715 /* PostViewModel.swift */,
+				13ED12711E97B850002E6715 /* UserViewModel.swift */,
+				13ED12731E97B958002E6715 /* AddressViewModel.swift */,
+				13ED12751E97B967002E6715 /* CompanyViewModel.swift */,
+				13ED12791E97BC5A002E6715 /* LocationViewModel.swift */,
 			);
 			path = MVVMAppViewModels;
 			sourceTree = "<group>";
@@ -523,6 +559,17 @@
 				13CFB9681E8A6AB8001BBBCB /* MVVMAppViewsTests */,
 			);
 			name = Tests;
+			sourceTree = "<group>";
+		};
+		13ED127B1E97BE50002E6715 /* Comment */ = {
+			isa = PBXGroup;
+			children = (
+				13C6C0671E97C96D00F6478F /* CommentProvider.swift */,
+				13ED12801E97C0DC002E6715 /* CommentLocalProvider.swift */,
+				13ED12821E97C51B002E6715 /* CommentRemoteProvider.swift */,
+				13ED12841E97C524002E6715 /* CommentRouter.swift */,
+			);
+			path = Comment;
 			sourceTree = "<group>";
 		};
 		26B117943FD74CFE336F2B67 /* Pods */ = {
@@ -802,6 +849,7 @@
 					13CFB9371E8A6A9C001BBBCB = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 96LJ93WQBU;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 					13CFB93F1E8A6A9C001BBBCB = {
@@ -1251,19 +1299,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				1390D6B91E951A4D00F67D82 /* UserLocalProvider.swift in Sources */,
+				13ED12831E97C51B002E6715 /* CommentRemoteProvider.swift in Sources */,
 				1390D6AC1E95108A00F67D82 /* Address.swift in Sources */,
 				134272681E8D347400E63D10 /* Post.swift in Sources */,
+				13ED127F1E97BFDC002E6715 /* CommentMO.swift in Sources */,
 				1390D6C61E9529C600F67D82 /* PostMO.swift in Sources */,
+				13C6C0681E97C96D00F6478F /* CommentProvider.swift in Sources */,
 				1390D6B21E95142600F67D82 /* UserRemoteProvider.swift in Sources */,
 				1390D6A21E94D8F000F67D82 /* PostProvider.swift in Sources */,
 				1390D6B01E95110300F67D82 /* Company.swift in Sources */,
 				1390D6A01E94D8D500F67D82 /* PostLocalProvider.swift in Sources */,
+				13ED12851E97C524002E6715 /* CommentRouter.swift in Sources */,
 				1390D6A41E94E1EB00F67D82 /* ProviderError.swift in Sources */,
 				1390D6B41E95148400F67D82 /* UserRouter.swift in Sources */,
 				1390D6C31E95292100F67D82 /* DataModel.xcdatamodeld in Sources */,
 				1390D6AA1E95104300F67D82 /* User.swift in Sources */,
 				1390D6CB1E95325700F67D82 /* UserMO.swift in Sources */,
+				13ED12811E97C0DC002E6715 /* CommentLocalProvider.swift in Sources */,
 				134272731E8D39A900E63D10 /* PostRouter.swift in Sources */,
+				13ED12781E97BA57002E6715 /* Location.swift in Sources */,
+				13ED127D1E97BE86002E6715 /* Comment.swift in Sources */,
 				1390D6C01E9528B800F67D82 /* DataContainer.swift in Sources */,
 				1390D6BB1E951BA200F67D82 /* UserProvider.swift in Sources */,
 				134272711E8D396500E63D10 /* PostRemoteProvider.swift in Sources */,
@@ -1286,6 +1341,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13ED12701E97B7D1002E6715 /* PostViewModel.swift in Sources */,
+				13ED127A1E97BC5A002E6715 /* LocationViewModel.swift in Sources */,
+				13ED12721E97B850002E6715 /* UserViewModel.swift in Sources */,
+				13ED126E1E97B741002E6715 /* PostListViewModel.swift in Sources */,
+				13ED12761E97B967002E6715 /* CompanyViewModel.swift in Sources */,
+				13ED12741E97B958002E6715 /* AddressViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1637,6 +1698,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B7F3A7E6B473669C7E618444 /* Pods-MVVMAppViewModels.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -1650,6 +1712,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.gkaimakas.mvvm.app.viewmodels;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1661,6 +1724,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 26D4E58A19408A870A631D5D /* Pods-MVVMAppViewModels.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;

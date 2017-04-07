@@ -59,10 +59,38 @@ public extension SignalProducer where Value == Decoded<User>, Error == RemotePro
     }
 }
 
+public extension SignalProducer where Value == Decoded<Comment>, Error == RemoteProviderError {
+    func attempDecodeMap() -> SignalProducer<Comment, RemoteProviderError> {
+        return self
+            .attemptMap { (decoded: Decoded<Comment>) -> Result<Comment, RemoteProviderError> in
+                do {
+                    let value = try decoded.dematerialize()
+                    return Result.success(value)
+                } catch let error {
+                    return Result.failure(RemoteProviderError.decode(error as! DecodeError))
+                }
+        }
+    }
+}
+
 public extension SignalProducer where Value == Decoded<[Post]>, Error == RemoteProviderError {
     func attempDecodeMap() -> SignalProducer<[Post], RemoteProviderError> {
         return self
             .attemptMap { (decoded: Decoded<[Post]>) -> Result<[Post], RemoteProviderError> in
+                do {
+                    let value = try decoded.dematerialize()
+                    return Result.success(value)
+                } catch let error {
+                    return Result.failure(RemoteProviderError.decode(error as! DecodeError))
+                }
+        }
+    }
+}
+
+public extension SignalProducer where Value == Decoded<[Comment]>, Error == RemoteProviderError {
+    func attempDecodeMap() -> SignalProducer<[Comment], RemoteProviderError> {
+        return self
+            .attemptMap { (decoded: Decoded<[Comment]>) -> Result<[Comment], RemoteProviderError> in
                 do {
                     let value = try decoded.dematerialize()
                     return Result.success(value)

@@ -38,9 +38,18 @@ public class PostRepository: PostProvider {
                 return self.remoteProvider
                     .fetchPost(id: id)
                     .mapError { ProviderError.remote($0) }
-                    .flatMap(.latest) { self.localProvider
-                        .save(post: $0)
+                    .flatMap(.latest) { post -> SignalProducer<Post, ProviderError> in
+                        return self.localProvider
+                        .save(post: post)
                         .mapError { ProviderError.local($0) }
+                        .flatMapError{ error -> SignalProducer<Post, ProviderError> in
+                            switch error {
+                            case .local(let error) where error == .alreadyExists:
+                                return SignalProducer<Post, ProviderError>(value: post)
+                            default:
+                                return SignalProducer<Post, ProviderError>(error: error)
+                            }
+                        }
                 }
             }
     }

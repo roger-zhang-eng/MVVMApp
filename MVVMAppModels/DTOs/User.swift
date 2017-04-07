@@ -52,8 +52,8 @@ public struct User {
                                suite: mo.address_suite,
                                city: mo.address_city,
                                zipCode: mo.address_zipCode,
-                               geo: Address.Geo(lat: mo.address_geo_lat as? Double,
-                                                lng: mo.address_geo_lng as? Double)
+                               location: Location(latitude: mo.address_geo_lat as? Double,
+                                                longitude: mo.address_geo_lng as? Double)
             )
         
         self.company = Company(name: mo.company_name,

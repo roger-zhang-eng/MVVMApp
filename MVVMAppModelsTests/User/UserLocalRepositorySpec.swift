@@ -44,7 +44,7 @@ public class UserLocalRepositorySpec: QuickSpec {
                                         bs: "\(arc4random_uniform(1000))"))
                 
                 repo.save(user: newUser)
-                    .startWithResult({ (result: Result<User, ProviderError>) in
+                    .startWithResult({ (result: Result<User, LocalProviderError>) in
                         switch result {
                         case .success(let value):
                             user = value

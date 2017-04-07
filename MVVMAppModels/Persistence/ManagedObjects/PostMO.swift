@@ -10,6 +10,23 @@ import CoreData
 import Foundation
 
 public class PostMO: NSManagedObject {
+    public static func requestFetchPost(id: Int) -> NSFetchRequest<NSFetchRequestResult> {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: String(describing: self))
+        request.predicate = NSPredicate(format: "id == \(id)")
+        return request
+    }
+    
+    public static func requestFetchPagedPosts(page: Int, limit: Int) -> NSFetchRequest<NSFetchRequestResult> {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: String(describing: self))
+        request.fetchLimit = limit
+        request.fetchBatchSize = limit
+        request.fetchOffset = page * limit
+        request.sortDescriptors = [
+            NSSortDescriptor(key: "id", ascending: false)
+        ]
+        return request
+    }
+    
     @NSManaged public var id: Int64
     @NSManaged public var userId: Int64
     @NSManaged public var title: String?

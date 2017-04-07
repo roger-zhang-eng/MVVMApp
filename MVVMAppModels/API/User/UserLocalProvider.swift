@@ -12,8 +12,8 @@ import ReactiveSwift
 import Result
 
 public protocol UserLocalProvider {
-    func fetchUser(id: Int) -> SignalProducer<User, ProviderError>
-    func save(user: User) -> SignalProducer<User, ProviderError>
+    func fetchUser(id: Int) -> SignalProducer<User, LocalProviderError>
+    func save(user: User) -> SignalProducer<User, LocalProviderError>
 }
 
 public class UserLocalRepository: UserLocalProvider {
@@ -22,11 +22,11 @@ public class UserLocalRepository: UserLocalProvider {
         self.container = container
     }
     
-    public func fetchUser(id: Int) -> SignalProducer<User, ProviderError> {
-        return SignalProducer.init(error: ProviderError.local(.notFound))
+    public func fetchUser(id: Int) -> SignalProducer<User, LocalProviderError> {
+        return SignalProducer.init(error: .notFound)
     }
     
-    public func save(user: User) -> SignalProducer<User, ProviderError> {
+    public func save(user: User) -> SignalProducer<User, LocalProviderError> {
         return SignalProducer<UserMO, NSError>.attempt { () -> Result<UserMO, NSError> in
                 return Result<UserMO, NSError>(attempt: { () -> UserMO in
                     let mo = self.container.newObject(type: UserMO.self)
@@ -36,6 +36,6 @@ public class UserLocalRepository: UserLocalProvider {
                 })
             }
             .map { User($0) }
-            .mapError { ProviderError.local(.persistenceFailure($0)) }
+            .mapError { .persistenceFailure($0) }
     }
 }

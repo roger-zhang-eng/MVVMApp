@@ -27,7 +27,7 @@ public class UserRemoteRepositorySpec: QuickSpec {
                 var user: User? = nil
                 
                 repo.fetchUser(id: 1)
-                    .startWithResult({ (result: Result<User, ProviderError>) in
+                    .startWithResult({ (result: Result<User, RemoteProviderError>) in
                         switch result {
                         case.success(let value):
                             user = value

@@ -31,10 +31,15 @@ public class UserRepository: UserProvider {
     public func fetchUser(id: Int) -> SignalProducer<User, ProviderError> {
         return localProvider
             .fetchUser(id: id)
+            .mapError { ProviderError.local($0) }
             .flatMapError { (error: ProviderError) -> SignalProducer<User, ProviderError> in
                 return self.remoteProvider
                     .fetchUser(id: id)
-                    .flatMap(.latest) { self.localProvider.save(user: $0) }
+                    .mapError { ProviderError.remote($0) }
+                    .flatMap(.latest) { self.localProvider
+                        .save(user: $0)
+                        .mapError { ProviderError.local($0) }
+                    }
             }
     }
 }

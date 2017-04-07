@@ -17,17 +17,17 @@ import enum Result.Result
 import struct Result.AnyError
 
 public protocol UserRemoteProvider {
-    func fetchUser(id: Int) -> SignalProducer<User, ProviderError>
+    func fetchUser(id: Int) -> SignalProducer<User, RemoteProviderError>
 }
 
 public class UserRemoteRepository: UserRemoteProvider {
     public init() {}
     
-    public func fetchUser(id: Int) -> SignalProducer<User, ProviderError> {
+    public func fetchUser(id: Int) -> SignalProducer<User, RemoteProviderError> {
         return Alamofire.request(UserRouter.fetchUser(id))
             .reactive
             .responseJSON()
-            .promoteErrors(ProviderError.self)
+            .promoteErrors(RemoteProviderError.self)
             .attemptRemoteMap()
             .map { JSON($0) }
             .map { User.decode($0) }

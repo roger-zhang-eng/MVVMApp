@@ -31,5 +31,6 @@ public class UserViewModel {
         website = Property(value: user.website)
         address = Property(value: AddressViewModel(address: user.address))
         company = Property(value: CompanyViewModel(company: user.company))
+        
     }
 }

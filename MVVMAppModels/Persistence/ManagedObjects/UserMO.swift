@@ -10,6 +10,14 @@ import CoreData
 import Foundation
 
 public class UserMO: NSManagedObject {
+    
+    public static func requestFetchUser(id: Int) -> NSFetchRequest<NSFetchRequestResult> {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: String(describing: self))
+        request.predicate = NSPredicate(format: "id == \(id)")
+        return request
+    }
+
+    
     @NSManaged public var id: Int64
     @NSManaged public var name: String?
     @NSManaged public var username: String?

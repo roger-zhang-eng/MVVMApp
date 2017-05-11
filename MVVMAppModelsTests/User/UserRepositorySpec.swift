@@ -43,6 +43,16 @@ public class UserRepositorySpec: QuickSpec {
             }
             
         }
+        let prod = SignalProducer<Int?, NoError> { (observer, _) in
+            }
+            .skipNil()
+        
+        let prop = Property<String?>(initial: nil, then: prod
+            .map { value -> String in
+                return "\(value)"
+            }
+            
+        )
         
         
     }

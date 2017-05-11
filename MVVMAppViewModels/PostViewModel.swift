@@ -13,9 +13,33 @@ import ReactiveSwift
 import Result
 
 public class PostViewModel {
-    private let userProvider: UserProvider
+    public let id: Property<Int>
+    public let title: Property<String?>
+    public let body: Property<String?>
+    public let user: Property<UserViewModel>
     
-    public init(userProvider: UserProvider){
-        self.userProvider = userProvider
+    public let comments: Property<[CommentViewModel]>
+    public var fetchComments: Action<Void, [CommentViewModel], ProviderError>!
+    
+    private let _comments: MutableProperty<[CommentViewModel]>
+    
+    public init(post: Post, user: User, commentProvider: CommentProvider) {
+        id = Property(value: post.id)
+        title = Property(value: post.title)
+        body = Property(value: post.body)
+        self.user = Property<UserViewModel>(value: UserViewModel(user: user))
+        
+        _comments = MutableProperty([])
+        comments = Property(capturing: _comments)
+        
+        fetchComments = Action(enabledIf: comments.map({ $0.count == 0 })) { _ -> SignalProducer<[CommentViewModel], ProviderError> in
+            
+            return commentProvider
+                .fetchComments(postId: post.id)
+                .flatten()
+                .map { CommentViewModel(comment: $0) }
+                .collect()
+                .on(value: { self._comments.value = $0 })
+        }
     }
 }

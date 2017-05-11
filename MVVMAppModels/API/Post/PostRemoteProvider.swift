@@ -22,6 +22,8 @@ public protocol PostRemoteProvider {
 }
 
 public class PostRemoteRepository {
+    public init() {}
+    
     public func fetchPost(id: Int) -> SignalProducer<Post, RemoteProviderError> {
         return Alamofire.request(PostRouter.fetchPost(id))
             .reactive

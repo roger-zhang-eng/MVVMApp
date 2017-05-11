@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16D32" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16E195" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="CommentMO" representedClassName=".CommentMO" syncable="YES">
         <attribute name="body" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="email" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="postId" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -31,8 +31,8 @@
         <attribute name="website" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
+        <element name="CommentMO" positionX="-54" positionY="117" width="128" height="120"/>
         <element name="PostMO" positionX="-63" positionY="-18" width="128" height="105"/>
         <element name="UserMO" positionX="-54" positionY="18" width="128" height="270"/>
-        <element name="CommentMO" positionX="-54" positionY="117" width="128" height="120"/>
     </elements>
 </model>

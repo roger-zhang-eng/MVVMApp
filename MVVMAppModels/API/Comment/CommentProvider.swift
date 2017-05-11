@@ -17,6 +17,7 @@ public protocol CommentProvider {
     init(localProvider: CommentLocalProvider, remoteProvider: CommentRemoteProvider)
     
     func fetchComment(id: Int) -> SignalProducer<Comment, ProviderError>
+    func fetchComments(postId: Int) -> SignalProducer<[Comment], ProviderError>
 }
 
 public class CommentRepository: CommentProvider {

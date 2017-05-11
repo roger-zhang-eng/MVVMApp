@@ -18,16 +18,30 @@ public protocol UserLocalProvider {
 
 public class UserLocalRepository: UserLocalProvider {
     let container: DataContainer
+    
     public init(container: DataContainer) {
         self.container = container
     }
     
     public func fetchUser(id: Int) -> SignalProducer<User, LocalProviderError> {
-        return SignalProducer.init(error: .notFound)
+        return SignalProducer<UserMO?, NSError>.attempt { () -> Result<UserMO?, NSError> in
+            return Result<UserMO?, NSError>(attempt: { () -> UserMO? in
+                return try self.container.fetchObjects(type: UserMO.self, request: UserMO.requestFetchUser(id: id)).first
+            })
+            }
+            .mapError { .persistenceFailure($0) }
+            .flatMap(.latest) { value -> SignalProducer<UserMO, LocalProviderError> in
+                guard let value = value else {
+                    return SignalProducer<UserMO, LocalProviderError>(error: .notFound)
+                }
+                
+                return SignalProducer<UserMO, LocalProviderError>(value: value)
+            }
+            .map { User($0) }
     }
     
     public func save(user: User) -> SignalProducer<User, LocalProviderError> {
-        return SignalProducer<UserMO, NSError>.attempt { () -> Result<UserMO, NSError> in
+        let saveProducer = SignalProducer<UserMO, NSError>.attempt { () -> Result<UserMO, NSError> in
                 return Result<UserMO, NSError>(attempt: { () -> UserMO in
                     let mo = self.container.newObject(type: UserMO.self)
                     mo.inflate(user: user)
@@ -36,6 +50,17 @@ public class UserLocalRepository: UserLocalProvider {
                 })
             }
             .map { User($0) }
-            .mapError { .persistenceFailure($0) }
+            .mapError { LocalProviderError.persistenceFailure($0) }
+        
+        return fetchUser(id: user.id)
+            .flatMap(.latest) { _ in return SignalProducer<User, LocalProviderError>(error: .alreadyExists) }
+            .flatMapError { error -> SignalProducer<User, LocalProviderError> in
+                switch error {
+                case .notFound:
+                    return saveProducer
+                default:
+                    return SignalProducer<User, LocalProviderError>(error: error)
+                }
+        }
     }
 }

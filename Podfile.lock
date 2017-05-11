@@ -12,6 +12,7 @@ PODS:
     - ReactiveSwift (~> 1.1)
   - ReactiveSwift (1.1.0):
     - Result (~> 3.1)
+  - Render (2.1)
   - Result (3.2.1)
   - Runes (4.0.1)
   - Swinject (2.0.0)
@@ -25,6 +26,7 @@ DEPENDENCIES:
   - Quick
   - ReactiveCocoa
   - ReactiveSwift
+  - Render (~> 2.1)
   - Swinject
 
 SPEC CHECKSUMS:
@@ -36,10 +38,11 @@ SPEC CHECKSUMS:
   Quick: dafc587e21eed9f4cab3249b9f9015b0b7a7f71d
   ReactiveCocoa: f577006aa6c7b0b08020109ebaae3b77ada00adc
   ReactiveSwift: 2f4e4a02e5a5c87ea63f5fe667163ce2a67cbb57
+  Render: 8555327c8de895d020ab96ab7d9c454aa193c91c
   Result: 2453a22e5c5b11c0c3a478736e82cd02f763b781
   Runes: ff20f163b478ac2c0e18158d6086fd5b1997f983
   Swinject: 2e964a80d70ab09b3949c99032711f89147bfd60
 
-PODFILE CHECKSUM: 1bbcc0c87a4a081e579a15f8eca1d5501bbe4775
+PODFILE CHECKSUM: ed2ac822845cb321b84a6a933ccb5f5d89ca642c
 
 COCOAPODS: 1.2.0

@@ -11,6 +11,7 @@ target 'MVVMApp' do
     pod 'Curry'
     pod 'ReactiveCocoa'
     pod 'ReactiveSwift'
+    pod 'Render', '~> 2.1'
     pod 'Swinject'
 
     # Pods for MVVMApp
@@ -73,6 +74,7 @@ target 'MVVMAppViews' do
 
     pod 'ReactiveCocoa'
     pod 'ReactiveSwift'
+    pod 'Render', '~> 2.1'
 
     # Pods for MVVMAppViews
 

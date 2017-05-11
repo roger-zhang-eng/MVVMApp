@@ -28,7 +28,7 @@ public class UserLocalRepositorySpec: QuickSpec {
                 var user: User! = nil
                 let location = Location(latitude: 20,
                     longitude: 23)
-                let newUser = User(id: 0,
+                let newUser = User(id: Int(arc4random_uniform(10_000)),
                                    name: "\(arc4random_uniform(1000))",
                                    username: "\(arc4random_uniform(1000))",
                                    email: "\(arc4random_uniform(1000))",
@@ -54,6 +54,36 @@ public class UserLocalRepositorySpec: QuickSpec {
                     })
                 
                 expect(user).toEventuallyNot(beNil())
+            }
+            
+            it("should fail if the user exists"){
+                
+                let location = Location(latitude: 20,
+                                        longitude: 23)
+                let newUser = User(id: 0,
+                                   name: "\(arc4random_uniform(1000))",
+                    username: "\(arc4random_uniform(1000))",
+                    email: "\(arc4random_uniform(1000))",
+                    phone: "\(arc4random_uniform(1000))",
+                    website: "\(arc4random_uniform(1000))",
+                    address: Address(street: "\(arc4random_uniform(1000))",
+                        suite: "\(arc4random_uniform(1000))",
+                        city: "\(arc4random_uniform(1000))",
+                        zipCode: "\(arc4random_uniform(1000))",
+                        location: location),
+                    company: Company(name: "\(arc4random_uniform(1000))",
+                        catchPhrase: "\(arc4random_uniform(1000))",
+                        bs: "\(arc4random_uniform(1000))"))
+                
+                var error: LocalProviderError? = nil
+                
+                repo.save(user: newUser)
+                    .flatMap(.latest) { repo.save(user: $0)}
+                    .startWithFailed({ (err: LocalProviderError) in
+                        error = err
+                    })
+                
+                expect(error).toEventuallyNot(beNil())
             }
         }
     }

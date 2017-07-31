@@ -47,7 +47,9 @@ public class PostLocalRepository: PostLocalProvider {
     public func fetchPosts(page: Int, limit: Int) -> SignalProducer<[Post], LocalProviderError> {
         return SignalProducer<[PostMO], NSError>.attempt { () -> Result<[PostMO], NSError> in
                 return Result<[PostMO], NSError>(attempt: { () -> [PostMO] in
-                    return try self.container.fetchObjects(type: PostMO.self, request: PostMO.requestFetchPagedPosts(page: page, limit: limit))
+                    return try self.container
+                        .fetchObjects(type: PostMO.self,
+                                      request: PostMO.requestFetchPagedPosts(page: page, limit: limit))
                 })
             }
             .flatten()

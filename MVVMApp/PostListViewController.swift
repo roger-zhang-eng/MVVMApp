@@ -106,6 +106,13 @@ extension PostListViewController: UITableViewDataSource {
             cell.titleLabel.reactive.text <~ viewModel.title
                 .producer
                 .take(until: cell.reactive.prepareForReuse)
+                .map({ (title) -> String? in
+                    guard let title = title else {
+                        return nil
+                    }
+                    
+                    return "\(viewModel.id.value) - \(title)"
+                })
             
             return cell
         }

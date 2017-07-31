@@ -22,7 +22,7 @@ public class PostMO: NSManagedObject {
         request.fetchBatchSize = limit
         request.fetchOffset = page * limit
         request.sortDescriptors = [
-            NSSortDescriptor(key: "id", ascending: false)
+            NSSortDescriptor(key: "id", ascending: true)
         ]
         return request
     }

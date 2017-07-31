@@ -41,10 +41,6 @@ public class PostListViewModel {
             
             let producer = postProvider
                 .fetchPosts(page: self.page.value, limit: self.limit.value)
-                .on(value: { results in
-                    self.hasMoreEntries.value = results.count > 0
-                    self.page.value = self.page.value + 1
-                })
                 .flatten()
                 .flatMap(.merge) { (post: Post) in
                     return userProvider.fetchUser(id: post.userId)
@@ -53,6 +49,8 @@ public class PostListViewModel {
                 .map { PostViewModel(post: $0.post, user: $0.user, commentProvider: commentProvider) }
                 .collect()
                 .on(value: { results in
+                    self.hasMoreEntries.value = results.count > 0
+                    self.page.value = self.page.value + 1
                     self._posts.value = self._posts.value + results
                 })
             

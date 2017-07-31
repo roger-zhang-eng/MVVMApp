@@ -76,7 +76,7 @@ public class PostRepository: PostProvider {
             .flatMap(.latest) { SignalProducer.zip($0) }
         
         return localProvider
-            .fetchPosts(page: page, limit: limit)
+            .fetchPosts(page: page-1, limit: limit)
             .mapError { ProviderError.local($0) }
             .flatMap(.latest) { values -> SignalProducer<[Post], ProviderError> in
                 if values.count == 0 {

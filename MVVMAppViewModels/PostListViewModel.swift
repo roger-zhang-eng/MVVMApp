@@ -42,7 +42,7 @@ public class PostListViewModel {
             let producer = postProvider
                 .fetchPosts(page: self.page.value, limit: self.limit.value)
                 .flatten()
-                .flatMap(.merge) { (post: Post) in
+                .flatMap(.concat) { (post: Post) in
                     return userProvider.fetchUser(id: post.userId)
                         .map { (post: post, user: $0) }
                 }

@@ -45,7 +45,6 @@ class PostListViewController: UIViewController {
             .map({ _ in () })
         
         if viewModel.fetchPosts.isEnabled.value {
-            
             viewModel.fetchPosts
                 .apply()
                 .start()
@@ -140,6 +139,7 @@ extension PostListViewController: UITableViewDataSource {
 extension PostListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.section == viewModel.posts.value.count-1 &&
+            indexPath.row == PostListViewController.RowBody &&
             viewModel.fetchPosts.isExecuting.value == false {
             
             viewModel.fetchPosts

@@ -39,7 +39,8 @@ class PostListViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
-        tableView.reactive.reloadData <~ viewModel.posts
+        tableView.reactive.reloadData <~ viewModel
+            .posts
             .producer
             .map({ _ in () })
         
@@ -130,5 +131,14 @@ extension PostListViewController: UITableViewDataSource {
 }
 
 extension PostListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.section == viewModel.posts.value.count-1 &&
+            viewModel.fetchPosts.isExecuting.value == false {
+            
+            viewModel.fetchPosts
+                .apply()
+                .start()
+        }
+    }
     
 }

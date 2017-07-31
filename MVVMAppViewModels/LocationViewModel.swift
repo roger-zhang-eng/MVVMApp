@@ -20,6 +20,7 @@ public class LocationViewModel {
         latitude = Property(value: location.latitude)
         longitude = Property(value: location.longitude)
     }
+    
     public convenience init?(location: Location?) {
         guard let location = location else {
             return nil

@@ -24,6 +24,10 @@ class PostListViewController: UIViewController {
     var viewModel: PostListViewModel!
     @IBOutlet weak var tableView: UITableView!
     
+    let loadingAlert = UIAlertController(title: "MVVMApp",
+                                         message: "Fetching posts\nPlease wait...",
+                                         preferredStyle: UIAlertControllerStyle.alert)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,6 +47,22 @@ class PostListViewController: UIViewController {
             .posts
             .producer
             .map({ _ in () })
+        
+        viewModel.fetchPosts
+            .isExecuting
+            .producer
+            .skipRepeats()
+            .take(during: reactive.lifetime)
+            .take(until: reactive.trigger(for: #selector(PostListViewController.viewDidDisappear(_:))))
+            .startWithValues { isExecuting in
+                if isExecuting {
+                    self.present(self.loadingAlert, animated: true, completion: nil)
+                }
+                
+                if !isExecuting {
+                    self.loadingAlert.dismiss(animated: true, completion: nil)
+                }
+            }
         
         if viewModel.fetchPosts.isEnabled.value {
             viewModel.fetchPosts

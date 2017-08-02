@@ -25,7 +25,7 @@ public extension SignalProducer where Value == DataResponse<Any>, Error == Remot
                 case .success(let value):
                     return Result.success(value)
                 case .failure(_):
-                    return Result.failure(RemoteProviderError.request(response.response!.statusCode))
+                    return Result.failure(RemoteProviderError.request(response.response?.statusCode ?? 0))
                 }
         }
     }

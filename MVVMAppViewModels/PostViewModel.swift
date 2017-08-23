@@ -30,7 +30,7 @@ public class PostViewModel {
         self.user = Property<UserViewModel>(value: UserViewModel(user: user))
         
         _comments = MutableProperty([])
-        comments = Property(capturing: _comments)
+        comments = Property(_comments)
         
         fetchComments = Action(enabledIf: comments.map({ $0.count == 0 })) { _ -> SignalProducer<[CommentViewModel], ProviderError> in
             
@@ -39,7 +39,8 @@ public class PostViewModel {
                 .flatten()
                 .map { CommentViewModel(comment: $0) }
                 .collect()
-                .on(value: { self._comments.value = $0 })
         }
+        
+        _comments <~ fetchComments.values
     }
 }

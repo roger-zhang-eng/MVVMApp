@@ -34,7 +34,7 @@ public class PostListViewModel {
         self.userProvider = userProvider
         self.commentProvider = commentProvider
         
-        self.posts = Property<[PostViewModel]>(capturing: _posts)
+        self.posts = Property<[PostViewModel]>(_posts)
         
         
         self.fetchPosts = Action<Void, [PostViewModel], ProviderError>(enabledIf: hasMoreEntries) { _ -> SignalProducer<[PostViewModel], ProviderError> in
@@ -48,14 +48,13 @@ public class PostListViewModel {
                 }
                 .map { PostViewModel(post: $0.post, user: $0.user, commentProvider: commentProvider) }
                 .collect()
-                .on(value: { results in
-                    self.hasMoreEntries.value = results.count > 0
-                    self.page.value = self.page.value + 1
-                    self._posts.value = self._posts.value + results
-                })
-            
-            
+    
             return producer
         }
+        
+        
+        hasMoreEntries <~ fetchPosts.values.map { $0.count > 0 }
+        page <~ fetchPosts.values.map { $0.count > 0 ? self.page.value + 1 : self.page.value }
+        _posts <~ fetchPosts.values.map { self._posts.value + $0  }
     }
 }

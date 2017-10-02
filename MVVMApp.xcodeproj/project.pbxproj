@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1315D7681F82D26F00052B5D /* TitleViewModelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1315D7671F82D26F00052B5D /* TitleViewModelProvider.swift */; };
+		1315D76A1F82D2AE00052B5D /* UserViewModelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1315D7691F82D2AE00052B5D /* UserViewModelProvider.swift */; };
+		1315D76C1F82D2D900052B5D /* BodyViewModelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1315D76B1F82D2D900052B5D /* BodyViewModelProvider.swift */; };
+		1315D76F1F82D6A500052B5D /* EmailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1315D76E1F82D6A500052B5D /* EmailTableViewCell.xib */; };
+		1315D7711F82D6B500052B5D /* EmailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1315D7701F82D6B500052B5D /* EmailTableViewCell.swift */; };
+		1315D7731F82D74500052B5D /* EmailViewModelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1315D7721F82D74500052B5D /* EmailViewModelProvider.swift */; };
 		134272681E8D347400E63D10 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134272671E8D347400E63D10 /* Post.swift */; };
 		134272711E8D396500E63D10 /* PostRemoteProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134272701E8D396500E63D10 /* PostRemoteProvider.swift */; };
 		134272731E8D39A900E63D10 /* PostRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134272721E8D39A900E63D10 /* PostRouter.swift */; };
@@ -191,6 +197,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1315D7671F82D26F00052B5D /* TitleViewModelProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleViewModelProvider.swift; sourceTree = "<group>"; };
+		1315D7691F82D2AE00052B5D /* UserViewModelProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModelProvider.swift; sourceTree = "<group>"; };
+		1315D76B1F82D2D900052B5D /* BodyViewModelProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyViewModelProvider.swift; sourceTree = "<group>"; };
+		1315D76E1F82D6A500052B5D /* EmailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmailTableViewCell.xib; sourceTree = "<group>"; };
+		1315D7701F82D6B500052B5D /* EmailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailTableViewCell.swift; sourceTree = "<group>"; };
+		1315D7721F82D74500052B5D /* EmailViewModelProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewModelProvider.swift; sourceTree = "<group>"; };
 		134272671E8D347400E63D10 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		134272701E8D396500E63D10 /* PostRemoteProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostRemoteProvider.swift; sourceTree = "<group>"; };
 		134272721E8D39A900E63D10 /* PostRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostRouter.swift; sourceTree = "<group>"; };
@@ -368,6 +380,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1315D7661F82D24000052B5D /* Providers */ = {
+			isa = PBXGroup;
+			children = (
+				1315D7671F82D26F00052B5D /* TitleViewModelProvider.swift */,
+				1315D7691F82D2AE00052B5D /* UserViewModelProvider.swift */,
+				1315D76B1F82D2D900052B5D /* BodyViewModelProvider.swift */,
+				1315D7721F82D74500052B5D /* EmailViewModelProvider.swift */,
+			);
+			path = Providers;
+			sourceTree = "<group>";
+		};
+		1315D76D1F82D67300052B5D /* EmailTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				1315D76E1F82D6A500052B5D /* EmailTableViewCell.xib */,
+				1315D7701F82D6B500052B5D /* EmailTableViewCell.swift */,
+			);
+			path = EmailTableViewCell;
+			sourceTree = "<group>";
+		};
 		134272661E8D327600E63D10 /* DTOs */ = {
 			isa = PBXGroup;
 			children = (
@@ -406,6 +438,7 @@
 		13682D1D1EC4729F00ABE0BA /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				1315D76D1F82D67300052B5D /* EmailTableViewCell */,
 				13682D341EC4813C00ABE0BA /* PagingTableViewCell */,
 				13682D2F1EC47A3D00ABE0BA /* BodyTableViewCell */,
 				13682D231EC4733800ABE0BA /* CellProtocol.swift */,
@@ -603,6 +636,7 @@
 		13CFB9391E8A6A9C001BBBCB /* MVVMAppViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				1315D7661F82D24000052B5D /* Providers */,
 				13CFB93A1E8A6A9C001BBBCB /* MVVMAppViewModels.h */,
 				13CFB93B1E8A6A9C001BBBCB /* Info.plist */,
 				13ED126D1E97B741002E6715 /* PostListViewModel.swift */,
@@ -1048,6 +1082,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13682D2E1EC4794100ABE0BA /* TitleTableViewCell.xib in Resources */,
+				1315D76F1F82D6A500052B5D /* EmailTableViewCell.xib in Resources */,
 				13682D381EC481A600ABE0BA /* PagingTableViewCell.xib in Resources */,
 				13682D291EC4777C00ABE0BA /* UserTableViewCell.xib in Resources */,
 				13682D331EC47A7000ABE0BA /* BodyTableViewCell.xib in Resources */,
@@ -1264,6 +1299,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-MVVMApp/Pods-MVVMApp-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireReactiveExtensions/AlamofireReactiveExtensions.framework",
+				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveCocoa/ReactiveCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveSwift/ReactiveSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
@@ -1273,6 +1309,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireReactiveExtensions.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
@@ -1528,8 +1565,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				13ED12701E97B7D1002E6715 /* PostViewModel.swift in Sources */,
+				1315D7731F82D74500052B5D /* EmailViewModelProvider.swift in Sources */,
+				1315D76A1F82D2AE00052B5D /* UserViewModelProvider.swift in Sources */,
+				1315D76C1F82D2D900052B5D /* BodyViewModelProvider.swift in Sources */,
 				13ED127A1E97BC5A002E6715 /* LocationViewModel.swift in Sources */,
 				13ED12721E97B850002E6715 /* UserViewModel.swift in Sources */,
+				1315D7681F82D26F00052B5D /* TitleViewModelProvider.swift in Sources */,
 				13ED126E1E97B741002E6715 /* PostListViewModel.swift in Sources */,
 				13ED12761E97B967002E6715 /* CompanyViewModel.swift in Sources */,
 				13F473EF1F2FB83300DF449D /* CommentViewModel.swift in Sources */,
@@ -1550,6 +1591,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13682D2C1EC4792A00ABE0BA /* TitleTableViewCell.swift in Sources */,
+				1315D7711F82D6B500052B5D /* EmailTableViewCell.swift in Sources */,
 				13682D271EC474F900ABE0BA /* UITableView+CellProtocol.swift in Sources */,
 				13682D311EC47A5900ABE0BA /* BodyTableViewCell.swift in Sources */,
 				13682D221EC4730E00ABE0BA /* UserTableViewCell.swift in Sources */,

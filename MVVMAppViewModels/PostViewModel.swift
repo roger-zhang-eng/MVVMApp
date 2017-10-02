@@ -44,3 +44,9 @@ public class PostViewModel {
         _comments <~ fetchComments.values
     }
 }
+
+extension PostViewModel: TitleViewModelProvider {}
+
+extension PostViewModel: BodyViewModelProvider {}
+
+extension PostViewModel: UserViewModelProvider {}

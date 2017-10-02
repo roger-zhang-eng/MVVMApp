@@ -6,6 +6,7 @@
 //  Copyright © 2017 George Kaimakas. All rights reserved.
 //
 
+import ChameleonFramework
 import Foundation
 import MVVMAppModels
 import MVVMAppViewModels
@@ -23,18 +24,15 @@ class PostListViewController: UIViewController {
     
     var viewModel: PostListViewModel!
     @IBOutlet weak var tableView: UITableView!
-    
-//    let loadingAlert = UIAlertController(title: "MVVMApp",
-//                                         message: "Fetching posts\nPlease wait...",
-//                                         preferredStyle: UIAlertControllerStyle.alert)
 
 	var loadingIndicator: UIActivityIndicatorView!
 	var loadingBarButtonItem: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
 
+		navigationItem.title = "Posts"
 		loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
-		loadingIndicator.color = UIColor.red
+		loadingIndicator.color = UIColor(hexString: "FFC107")
 		loadingIndicator.hidesWhenStopped = true
 		loadingBarButtonItem = UIBarButtonItem(customView: loadingIndicator)
 		self.navigationItem.setRightBarButton(loadingBarButtonItem, animated: true)
@@ -77,15 +75,6 @@ class PostListViewController: UIViewController {
             let viewModel = sender as? PostViewModel {
             
             viewController.viewModel = viewModel
-            
-            viewModel
-                .fetchComments
-                .isEnabled
-                .producer
-                .promoteError(ActionError<ProviderError>.self)
-                .filter({ $0 })
-                .flatMap(.latest) { _ in return viewModel.fetchComments.apply() }
-                .start()
         }
     }
 }
@@ -106,10 +95,7 @@ extension PostListViewController: UITableViewDataSource {
         if indexPath.row == PostListViewController.RowUser {
             let cell = tableView.deque(cell: UserTableViewCell.self, for: indexPath)
             
-            cell.usernameLabel.reactive.text <~ viewModel.user
-                .producer
-                .flatMap(.latest) { $0.username }
-                .take(until: cell.reactive.prepareForReuse)
+            cell.viewModel = viewModel
             
             return cell
         }
@@ -117,16 +103,7 @@ extension PostListViewController: UITableViewDataSource {
         if indexPath.row == PostListViewController.RowTitle {
             let cell = tableView.deque(cell: TitleTableViewCell.self)
             
-            cell.titleLabel.reactive.text <~ viewModel.title
-                .producer
-                .take(until: cell.reactive.prepareForReuse)
-                .map({ (title) -> String? in
-                    guard let title = title else {
-                        return nil
-                    }
-                    
-                    return "\(viewModel.id.value) - \(title)"
-                })
+            cell.viewModel = viewModel
             
             return cell
         }
@@ -134,9 +111,7 @@ extension PostListViewController: UITableViewDataSource {
         if indexPath.row == PostListViewController.RowBody {
             let cell = tableView.deque(cell: BodyTableViewCell.self)
             
-            cell.bodyLabel.reactive.text <~ viewModel.body
-                .producer
-                .take(until: cell.reactive.prepareForReuse)
+            cell.viewModel = viewModel
             
             return cell
         }

@@ -35,3 +35,7 @@ public class CommentViewModel {
         self.init(comment: comment)
     }
 }
+
+extension CommentViewModel: EmailViewModelProvider {}
+
+extension CommentViewModel: BodyViewModelProvider {}

@@ -6,6 +6,7 @@
 //  Copyright © 2017 George Kaimakas. All rights reserved.
 //
 
+import ChameleonFramework
 import MVVMAppModels
 import MVVMAppViewModels
 import ReactiveCocoa
@@ -83,6 +84,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                          commentProvider: r.resolve(CommentProvider.self)!)
             }
             .inObjectScope(.container)
+
+
+		UINavigationBar.appearance().tintColor = UIColor(hexString: "#FAFAFA")
+		UINavigationBar.appearance().titleTextAttributes = [
+			NSAttributedStringKey.foregroundColor : UIColor(hexString: "FFC107")!
+		]
+		UINavigationBar.appearance().barTintColor = UIColor(hexString: "#F44336")
+		UINavigationBar.appearance().isTranslucent = false
         
         return true
     }

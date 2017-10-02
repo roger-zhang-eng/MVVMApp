@@ -7,6 +7,9 @@ target 'MVVMApp' do
 
     pod 'Alamofire'
     pod 'AlamofireReactiveExtensions', '2.1.0-alpha.2'
+
+	pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
+
     pod 'ReactiveCocoa', '6.1.0-alpha.2'
     pod 'ReactiveSwift', '2.1.0-alpha.2'
     pod 'Swinject'

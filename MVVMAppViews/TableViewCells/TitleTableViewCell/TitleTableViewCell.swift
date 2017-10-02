@@ -14,5 +14,17 @@ import Result
 import UIKit
 
 public class TitleTableViewCell: UITableViewCell {
-    @IBOutlet public weak var titleLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+
+	public var viewModel: TitleViewModelProvider! {
+		didSet {
+			titleLabel.reactive.text <~ viewModel
+				.title
+				.producer
+				.take(during: reactive.lifetime)
+				.take(until: reactive.prepareForReuse)
+		}
+	}
+
+
 }

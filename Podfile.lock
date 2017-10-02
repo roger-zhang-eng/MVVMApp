@@ -3,6 +3,9 @@ PODS:
   - AlamofireReactiveExtensions (2.1.0-alpha.2):
     - Alamofire (~> 4.0)
     - ReactiveSwift (~> 2.1.0-alpha.2)
+  - ChameleonFramework/Default (2.1.0)
+  - ChameleonFramework/Swift (2.1.0):
+    - ChameleonFramework/Default
   - Nimble (7.0.2)
   - Quick (1.2.0)
   - ReactiveCocoa (6.1.0-alpha.2):
@@ -15,15 +18,26 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - AlamofireReactiveExtensions (= 2.1.0-alpha.2)
+  - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
   - Nimble
   - Quick
   - ReactiveCocoa (= 6.1.0-alpha.2)
   - ReactiveSwift (= 2.1.0-alpha.2)
   - Swinject
 
+EXTERNAL SOURCES:
+  ChameleonFramework:
+    :git: https://github.com/ViccAlexander/Chameleon.git
+
+CHECKOUT OPTIONS:
+  ChameleonFramework:
+    :commit: 6dd284bde21ea2e7f9fd89bc36f40df16e16369d
+    :git: https://github.com/ViccAlexander/Chameleon.git
+
 SPEC CHECKSUMS:
   Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
   AlamofireReactiveExtensions: 858e02177d262d1d47d13df52a17fbbae1c2bf71
+  ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   Nimble: bfe1f814edabba69ff145cb1283e04ed636a67f2
   Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
   ReactiveCocoa: 6e9d1356ac1456cff179aa1402e5fcc71c9fc851
@@ -31,6 +45,6 @@ SPEC CHECKSUMS:
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
   Swinject: afea49fd95f392b41171669f165842879c48fad6
 
-PODFILE CHECKSUM: 72751c3b186ca993cda12ec4ccbc86860deefc05
+PODFILE CHECKSUM: 8d0835c3ae2f31e3d19468e2cdf8d2e293190a94
 
 COCOAPODS: 1.3.1

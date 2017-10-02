@@ -22,11 +22,14 @@ class PostViewController: UIViewController {
     
     var viewModel: PostViewModel!
     @IBOutlet weak var tableView: UITableView!
+	var loadingIndicator: UIActivityIndicatorView!
+	var loadingBarButtonItem: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-        tableView.register(cell: UserTableViewCell.self)
+
+		tableView.register(cell: EmailTableViewCell.self)
+		tableView.register(cell: UserTableViewCell.self)
         tableView.register(cell: TitleTableViewCell.self)
         tableView.register(cell: BodyTableViewCell.self)
         tableView.register(cell: PagingTableViewCell.self)
@@ -35,10 +38,29 @@ class PostViewController: UIViewController {
         tableView.estimatedRowHeight = 24
         tableView.dataSource = self
         tableView.delegate = self
-        
+
+		loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+		loadingIndicator.color = UIColor(hexString: "FFC107")
+		loadingIndicator.hidesWhenStopped = true
+		loadingBarButtonItem = UIBarButtonItem(customView: loadingIndicator)
+		self.navigationItem.setRightBarButton(loadingBarButtonItem, animated: true)
+
+		loadingIndicator.reactive.isAnimating <~ viewModel
+			.fetchComments
+			.isExecuting
+		
         tableView.reactive.reloadData <~ viewModel
             .comments
             .map { _ in () }
+
+		viewModel
+			.fetchComments
+			.isEnabled
+			.producer
+			.promoteError(ActionError<ProviderError>.self)
+			.filter({ $0 })
+			.flatMap(.latest) { _ in return self.viewModel.fetchComments.apply() }
+			.start()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -64,9 +86,7 @@ extension PostViewController: UITableViewDataSource {
             if indexPath.item == PostViewController.RowTitle {
                 let cell = tableView.deque(cell: TitleTableViewCell.self)
                 
-                cell.titleLabel.reactive.text <~ viewModel.title
-                    .producer
-                    .take(until: cell.reactive.prepareForReuse)
+                cell.viewModel = viewModel
                 
                 return cell
             }
@@ -74,10 +94,7 @@ extension PostViewController: UITableViewDataSource {
             if indexPath.item == PostViewController.RowUser {
                 let cell = tableView.deque(cell: UserTableViewCell.self, for: indexPath)
                 
-                cell.usernameLabel.reactive.text <~ viewModel.user
-                    .producer
-                    .flatMap(.latest) { $0.username }
-                    .take(until: cell.reactive.prepareForReuse)
+                cell.viewModel = viewModel
                 
                 return cell
                 
@@ -86,9 +103,7 @@ extension PostViewController: UITableViewDataSource {
             if indexPath.item == PostViewController.RowBody {
                 let cell = tableView.deque(cell: BodyTableViewCell.self)
                 
-                cell.bodyLabel.reactive.text <~ viewModel.body
-                    .producer
-                    .take(until: cell.reactive.prepareForReuse)
+                cell.viewModel = viewModel
                 
                 return cell
                 
@@ -99,11 +114,9 @@ extension PostViewController: UITableViewDataSource {
         
         if indexPath.row == 0 {
             
-            let cell = tableView.deque(cell: UserTableViewCell.self, for: indexPath)
+            let cell = tableView.deque(cell: EmailTableViewCell.self, for: indexPath)
             
-            cell.usernameLabel.reactive.text <~ commentViewModel.email
-                .producer
-                .take(until: cell.reactive.prepareForReuse)
+            cell.viewModel = commentViewModel
             
             return cell
         }
@@ -112,9 +125,7 @@ extension PostViewController: UITableViewDataSource {
             
             let cell = tableView.deque(cell: BodyTableViewCell.self)
             
-            cell.bodyLabel.reactive.text <~ commentViewModel.body
-                .producer
-                .take(until: cell.reactive.prepareForReuse)
+            cell.viewModel = commentViewModel
             
             return cell
             

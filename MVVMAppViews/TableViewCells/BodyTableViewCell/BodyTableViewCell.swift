@@ -7,9 +7,23 @@
 //
 
 import Foundation
+import MVVMAppViewModels
+import ReactiveSwift
+import ReactiveCocoa
+import Result
 import UIKit
 
 public class BodyTableViewCell: UITableViewCell {
     
-    @IBOutlet public weak var bodyLabel: UILabel!
+    @IBOutlet weak var bodyLabel: UILabel!
+
+	public var viewModel: BodyViewModelProvider! {
+		didSet {
+			bodyLabel.reactive.text <~ viewModel
+				.body
+				.producer
+				.take(until: reactive.prepareForReuse)
+				.take(during: reactive.lifetime)
+		}
+	}
 }

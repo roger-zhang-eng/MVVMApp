@@ -6,12 +6,9 @@
 //  Copyright © 2017 George Kaimakas. All rights reserved.
 //
 
-import Argo
-import Curry
 import Foundation
-import Runes
 
-public struct User {
+public struct User: Codable {
     public let id: Int
     public let name: String?
     public let username: String?
@@ -59,19 +56,5 @@ public struct User {
         self.company = Company(name: mo.company_name,
                                catchPhrase: mo.company_catchPhrase,
                                bs: mo.company_catchPhrase)
-    }
-}
-
-extension User: Decodable {
-    public static func decode(_ json: JSON) -> Decoded<User> {
-        return curry(self.init)
-            <^> json <| "id"
-            <*> json <|? "name"
-            <*> json <|? "username"
-            <*> json <|? "email"
-            <*> json <|? "phone"
-            <*> json <|? "website"
-            <*> json <|? "address"
-            <*> json <|? "company"
     }
 }

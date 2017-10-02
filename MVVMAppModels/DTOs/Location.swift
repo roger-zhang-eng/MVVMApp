@@ -6,12 +6,9 @@
 //  Copyright © 2017 George Kaimakas. All rights reserved.
 //
 
-import Argo
-import Curry
 import Foundation
-import Runes
 
-public struct Location {
+public struct Location: Codable {
     public let latitude: Double?
     public let longitude: Double?
     
@@ -29,12 +26,4 @@ public struct Location {
         self.longitude = longitude
     }
     
-}
-
-extension Location: Decodable {
-    public static func decode(_ json: JSON) -> Decoded<Location> {
-        return curry(self.init)
-            <^> json <| "lat"
-            <*> json <| "lng"
-    }
 }

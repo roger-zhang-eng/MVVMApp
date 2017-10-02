@@ -24,12 +24,20 @@ class PostListViewController: UIViewController {
     var viewModel: PostListViewModel!
     @IBOutlet weak var tableView: UITableView!
     
-    let loadingAlert = UIAlertController(title: "MVVMApp",
-                                         message: "Fetching posts\nPlease wait...",
-                                         preferredStyle: UIAlertControllerStyle.alert)
-    
+//    let loadingAlert = UIAlertController(title: "MVVMApp",
+//                                         message: "Fetching posts\nPlease wait...",
+//                                         preferredStyle: UIAlertControllerStyle.alert)
+
+	var loadingIndicator: UIActivityIndicatorView!
+	var loadingBarButtonItem: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
+
+		loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+		loadingIndicator.color = UIColor.red
+		loadingIndicator.hidesWhenStopped = true
+		loadingBarButtonItem = UIBarButtonItem(customView: loadingIndicator)
+		self.navigationItem.setRightBarButton(loadingBarButtonItem, animated: true)
         
         viewModel = inject(PostListViewModel.self)
         
@@ -47,22 +55,9 @@ class PostListViewController: UIViewController {
             .posts
             .producer
             .map({ _ in () })
-        
-        viewModel.fetchPosts
-            .isExecuting
-            .producer
-            .skipRepeats()
-            .take(during: reactive.lifetime)
-            .take(until: reactive.trigger(for: #selector(PostListViewController.viewDidDisappear(_:))))
-            .startWithValues { isExecuting in
-                if isExecuting {
-                    self.present(self.loadingAlert, animated: true, completion: nil)
-                }
-                
-                if !isExecuting {
-                    self.loadingAlert.dismiss(animated: true, completion: nil)
-                }
-            }
+
+		loadingIndicator.reactive.isAnimating <~ viewModel.fetchPosts
+			.isExecuting
         
         if viewModel.fetchPosts.isEnabled.value {
             viewModel.fetchPosts
@@ -87,7 +82,7 @@ class PostListViewController: UIViewController {
                 .fetchComments
                 .isEnabled
                 .producer
-                .promoteErrors(ActionError<ProviderError>.self)
+                .promoteError(ActionError<ProviderError>.self)
                 .filter({ $0 })
                 .flatMap(.latest) { _ in return viewModel.fetchComments.apply() }
                 .start()

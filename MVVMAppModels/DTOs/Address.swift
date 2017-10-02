@@ -6,12 +6,9 @@
 //  Copyright © 2017 George Kaimakas. All rights reserved.
 //
 
-import Argo
-import Curry
 import Foundation
-import Runes
 
-public struct Address {
+public struct Address: Codable {
     
     public let street: String?
     public let suite: String?
@@ -30,16 +27,5 @@ public struct Address {
         self.city = city
         self.zipCode = zipCode
         self.location = location
-    }
-}
-
-extension Address: Decodable {
-    public static func decode(_ json: JSON) -> Decoded<Address> {
-        return curry(self.init)
-            <^> json <|? "street"
-            <*> json <|? "suite"
-            <*> json <|? "city"
-            <*> json <|? "zipcode"
-            <*> json <|? "geo"
     }
 }

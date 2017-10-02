@@ -24,7 +24,7 @@ public class UserLocalRepository: UserLocalProvider {
     }
     
     public func fetchUser(id: Int) -> SignalProducer<User, LocalProviderError> {
-        return SignalProducer<UserMO?, NSError>.attempt { () -> Result<UserMO?, NSError> in
+		return SignalProducer<UserMO?, NSError> { () -> Result<UserMO?, NSError> in
             return Result<UserMO?, NSError>(attempt: { () -> UserMO? in
                 return try self.container.fetchObjects(type: UserMO.self, request: UserMO.requestFetchUser(id: id)).first
             })
@@ -41,7 +41,7 @@ public class UserLocalRepository: UserLocalProvider {
     }
     
     public func save(user: User) -> SignalProducer<User, LocalProviderError> {
-        let saveProducer = SignalProducer<UserMO, NSError>.attempt { () -> Result<UserMO, NSError> in
+		let saveProducer = SignalProducer<UserMO, NSError> { () -> Result<UserMO, NSError> in
                 return Result<UserMO, NSError>(attempt: { () -> UserMO in
                     let mo = self.container.newObject(type: UserMO.self)
                     mo.inflate(user: user)

@@ -8,11 +8,8 @@
 
 import Alamofire
 import AlamofireReactiveExtensions
-import Argo
-import Curry
 import Foundation
 import ReactiveSwift
-import Runes
 import enum Result.Result
 import struct Result.AnyError
 
@@ -26,11 +23,9 @@ public class UserRemoteRepository: UserRemoteProvider {
     public func fetchUser(id: Int) -> SignalProducer<User, RemoteProviderError> {
         return Alamofire.request(UserRouter.fetchUser(id))
             .reactive
-            .responseJSON()
-            .promoteErrors(RemoteProviderError.self)
+            .responseData()
+            .promoteError(RemoteProviderError.self)
             .attemptRemoteMap()
-            .map { JSON($0) }
-            .map { User.decode($0) }
-            .attempDecodeMap()
+			.attemptJsonDecode(User.self)
     }
 }

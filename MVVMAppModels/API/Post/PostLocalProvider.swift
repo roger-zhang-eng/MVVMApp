@@ -28,7 +28,7 @@ public class PostLocalRepository: PostLocalProvider {
     }
     
     public func fetchPost(id: Int) -> SignalProducer<Post, LocalProviderError> {
-        return SignalProducer<PostMO?, NSError>.attempt { () -> Result<PostMO?, NSError> in
+		return SignalProducer<PostMO?, NSError> { () -> Result<PostMO?, NSError> in
                 return Result<PostMO?, NSError>(attempt: { () -> PostMO? in
                     return try self.container.fetchObjects(type: PostMO.self, request: PostMO.requestFetchPost(id: id)).first
                 })
@@ -45,7 +45,7 @@ public class PostLocalRepository: PostLocalProvider {
     }
     
     public func fetchPosts(page: Int, limit: Int) -> SignalProducer<[Post], LocalProviderError> {
-        return SignalProducer<[PostMO], NSError>.attempt { () -> Result<[PostMO], NSError> in
+		return SignalProducer<[PostMO], NSError> { () -> Result<[PostMO], NSError> in
                 return Result<[PostMO], NSError>(attempt: { () -> [PostMO] in
                     return try self.container
                         .fetchObjects(type: PostMO.self,
@@ -59,7 +59,7 @@ public class PostLocalRepository: PostLocalProvider {
     }
     
     public func save(post: Post) -> SignalProducer<Post, LocalProviderError> {
-        let saveProducer = SignalProducer<PostMO, NSError>.attempt { () -> Result<PostMO, NSError> in
+		let saveProducer = SignalProducer<PostMO, NSError> { () -> Result<PostMO, NSError> in
             return Result<PostMO, NSError>(attempt: { () -> PostMO in
                 let postMO: PostMO = self.container.newObject(type: PostMO.self)
                 postMO.inflate(post: post)

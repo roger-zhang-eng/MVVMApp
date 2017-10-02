@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Argo
 
 public enum ProviderError: Swift.Error {
     case unknown
@@ -25,7 +24,7 @@ public enum RemoteProviderError: Swift.Error, Equatable {
     }
     
     case request(Int)
-    case decode(DecodeError)
+    case decode(NSError)
 }
 
 public enum LocalProviderError: Swift.Error, Equatable {

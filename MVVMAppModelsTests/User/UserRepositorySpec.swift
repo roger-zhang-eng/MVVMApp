@@ -7,12 +7,9 @@
 //  Copyright © 2017 George Kaimakas. All rights reserved.
 //
 
-import Argo
-import Curry
 import Foundation
 import Nimble
 import Quick
-import Runes
 import Result
 import ReactiveSwift
 @testable import MVVMAppModels
@@ -42,18 +39,7 @@ public class UserRepositorySpec: QuickSpec {
                 expect(user).toEventuallyNot(beNil(), timeout: 20)
             }
             
-        }
-        let prod = SignalProducer<Int?, NoError> { (observer, _) in
-            }
-            .skipNil()
-        
-        let prop = Property<String?>(initial: nil, then: prod
-            .map { value -> String in
-                return "\(value)"
-            }
-            
-        )
-        
+        }        
         
     }
 }

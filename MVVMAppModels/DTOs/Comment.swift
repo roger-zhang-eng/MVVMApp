@@ -6,12 +6,9 @@
 //  Copyright © 2017 George Kaimakas. All rights reserved.
 //
 
-import Argo
-import Curry
 import Foundation
-import Runes
 
-public struct Comment {
+public struct Comment: Codable {
     public let postId: Int
     public let id: Int
     public let name: String?
@@ -37,17 +34,6 @@ public struct Comment {
         name = mo.name
         email = mo.email
         body = mo.body
-    }
-}
-
-extension Comment: Decodable {
-    public static func decode(_ json: JSON) -> Decoded<Comment> {
-        return curry(self.init)
-            <^> json <| "postId"
-            <*> json <| "id"
-            <*> json <| "name"
-            <*> json <| "email"
-            <*> json <| "body"
     }
 }
 

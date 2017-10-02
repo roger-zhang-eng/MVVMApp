@@ -6,12 +6,9 @@ target 'MVVMApp' do
     use_frameworks!
 
     pod 'Alamofire'
-    pod 'AlamofireReactiveExtensions'
-    pod 'Argo'
-    pod 'Curry'
-    pod 'ReactiveCocoa'
-    pod 'ReactiveSwift'
-    pod 'Render', '~> 2.1'
+    pod 'AlamofireReactiveExtensions', '2.1.0-alpha.2'
+    pod 'ReactiveCocoa', '6.1.0-alpha.2'
+    pod 'ReactiveSwift', '2.1.0-alpha.2'
     pod 'Swinject'
 
     # Pods for MVVMApp
@@ -31,11 +28,9 @@ target 'MVVMAppModels' do
     use_frameworks!
 
     pod 'Alamofire'
-    pod 'AlamofireReactiveExtensions'
-    pod 'Argo'
-    pod 'Curry'
-    pod 'ReactiveCocoa'
-    pod 'ReactiveSwift'
+    pod 'AlamofireReactiveExtensions', '2.1.0-alpha.2'
+	pod 'ReactiveCocoa', '6.1.0-alpha.2'
+	pod 'ReactiveSwift', '2.1.0-alpha.2'
 
     # Pods for MVVMAppModels
 
@@ -53,8 +48,8 @@ target 'MVVMAppViewModels' do
     # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
     use_frameworks!
 
-    pod 'ReactiveCocoa'
-    pod 'ReactiveSwift'
+	pod 'ReactiveCocoa', '6.1.0-alpha.2'
+	pod 'ReactiveSwift', '2.1.0-alpha.2'
   
     # Pods for MVVMAppViewModels
 
@@ -72,9 +67,8 @@ target 'MVVMAppViews' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
     use_frameworks!
 
-    pod 'ReactiveCocoa'
-    pod 'ReactiveSwift'
-    pod 'Render', '~> 2.1'
+	pod 'ReactiveCocoa', '6.1.0-alpha.2'
+	pod 'ReactiveSwift', '2.1.0-alpha.2'
 
     # Pods for MVVMAppViews
 
@@ -86,4 +80,15 @@ target 'MVVMAppViews' do
       pod 'Nimble'
     end
 
+end
+
+
+post_install do |installer|
+	installer.pods_project.targets.each do |target|
+		if target.name == 'ReactiveCocoa'
+			target.build_configurations.each do |config|
+				config.build_settings['SWIFT_VERSION'] = '3.0'
+			end
+		end
+	end
 end

@@ -8,96 +8,38 @@
 
 import Alamofire
 import AlamofireReactiveExtensions
-import Argo
-import Curry
 import Foundation
 import ReactiveSwift
-import Runes
 import enum Result.Result
 import struct Result.AnyError
 
-public extension SignalProducer where Value == DataResponse<Any>, Error == RemoteProviderError {
-    func attemptRemoteMap() -> SignalProducer<Any, RemoteProviderError> {
+public extension SignalProducer where Value == DataResponse<Data>, Error == RemoteProviderError {
+    func attemptRemoteMap() -> SignalProducer<Data, RemoteProviderError> {
         return self
-            .attemptMap { (response: DataResponse<Any>) -> Result<Any, RemoteProviderError> in
+            .attemptMap { (response: DataResponse<Data>) -> Result<Data, RemoteProviderError> in
                 
                 switch response.result {
                 case .success(let value):
                     return Result.success(value)
                 case .failure(_):
-                    return Result.failure(RemoteProviderError.request(response.response?.statusCode ?? 0))
+                    return Result.failure(RemoteProviderError.request(response.response?.statusCode ?? 400))
                 }
         }
     }
 }
 
-public extension SignalProducer where Value == Decoded<Post>, Error == RemoteProviderError {
-    func attempDecodeMap() -> SignalProducer<Post, RemoteProviderError> {
-        return self
-            .attemptMap { (decoded: Decoded<Post>) -> Result<Post, RemoteProviderError> in
-                do {
-                    let value = try decoded.dematerialize()
-                    return Result.success(value)
-                } catch let error{
-                    return Result.failure(RemoteProviderError.decode(error as! DecodeError))
-                }
-        }
-    }
-}
-
-public extension SignalProducer where Value == Decoded<User>, Error == RemoteProviderError {
-    func attempDecodeMap() -> SignalProducer<User, RemoteProviderError> {
-        return self
-            .attemptMap { (decoded: Decoded<User>) -> Result<User, RemoteProviderError> in
-                do {
-                    let value = try decoded.dematerialize()
-                    return Result.success(value)
-                } catch let error {
-                    return Result.failure(RemoteProviderError.decode(error as! DecodeError))
-                }
-        }
-    }
-}
-
-public extension SignalProducer where Value == Decoded<Comment>, Error == RemoteProviderError {
-    func attempDecodeMap() -> SignalProducer<Comment, RemoteProviderError> {
-        return self
-            .attemptMap { (decoded: Decoded<Comment>) -> Result<Comment, RemoteProviderError> in
-                do {
-                    let value = try decoded.dematerialize()
-                    return Result.success(value)
-                } catch let error {
-                    return Result.failure(RemoteProviderError.decode(error as! DecodeError))
-                }
-        }
-    }
-}
-
-public extension SignalProducer where Value == Decoded<[Post]>, Error == RemoteProviderError {
-    func attempDecodeMap() -> SignalProducer<[Post], RemoteProviderError> {
-        return self
-            .attemptMap { (decoded: Decoded<[Post]>) -> Result<[Post], RemoteProviderError> in
-                do {
-                    let value = try decoded.dematerialize()
-                    return Result.success(value)
-                } catch let error {
-                    return Result.failure(RemoteProviderError.decode(error as! DecodeError))
-                }
-        }
-    }
-}
-
-public extension SignalProducer where Value == Decoded<[Comment]>, Error == RemoteProviderError {
-    func attempDecodeMap() -> SignalProducer<[Comment], RemoteProviderError> {
-        return self
-            .attemptMap { (decoded: Decoded<[Comment]>) -> Result<[Comment], RemoteProviderError> in
-                do {
-                    let value = try decoded.dematerialize()
-                    return Result.success(value)
-                } catch let error {
-                    return Result.failure(RemoteProviderError.decode(error as! DecodeError))
-                }
-        }
-    }
+public extension SignalProducer where Value == Data, Error == RemoteProviderError {
+	func attemptJsonDecode<T: Decodable>(_ t: T.Type) -> SignalProducer<T, RemoteProviderError> {
+		return self
+			.attemptMap({ data -> Result<T, RemoteProviderError> in
+				return Result<T, RemoteProviderError>.init(attempt: { () -> T in
+					do {
+						return try JSONDecoder().decode(t, from: data)
+					} catch let error as NSError {
+						throw RemoteProviderError.decode(error)
+					}
+				})
+			})
+	}
 }
 

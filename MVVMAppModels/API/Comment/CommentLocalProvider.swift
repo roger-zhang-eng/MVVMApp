@@ -26,7 +26,7 @@ public class CommentLocalRepository: CommentLocalProvider {
     }
     
     public func fetchComment(id: Int) -> SignalProducer<Comment, LocalProviderError> {
-        return SignalProducer<CommentMO?, NSError>.attempt { () -> Result<CommentMO?, NSError> in
+		return SignalProducer<CommentMO?, NSError> { () -> Result<CommentMO?, NSError> in
                 return Result<CommentMO?, NSError>(attempt: { () -> CommentMO? in
                     return try self.container
                         .fetchObjects(type: CommentMO.self,
@@ -46,7 +46,7 @@ public class CommentLocalRepository: CommentLocalProvider {
     }
     
     public func fetchComments(postId: Int) -> SignalProducer<[Comment], LocalProviderError> {
-        return SignalProducer<[CommentMO], NSError>.attempt { () -> Result<[CommentMO], NSError> in
+		return SignalProducer<[CommentMO], NSError> { () -> Result<[CommentMO], NSError> in
             return Result<[CommentMO], NSError>(attempt: { () -> [CommentMO] in
                 return try self.container
                             .fetchObjects(type: CommentMO.self,
@@ -62,7 +62,7 @@ public class CommentLocalRepository: CommentLocalProvider {
     
     
     public func save(comment: Comment) -> SignalProducer<Comment, LocalProviderError> {
-        let saveProducer = SignalProducer<CommentMO, NSError>.attempt { () -> Result<CommentMO, NSError> in
+		let saveProducer = SignalProducer<CommentMO, NSError> { () -> Result<CommentMO, NSError> in
             return Result<CommentMO, NSError>(attempt: { () -> CommentMO in
                 let mo: CommentMO = self.container.newObject(type: CommentMO.self)
                 mo.inflate(comment: comment)

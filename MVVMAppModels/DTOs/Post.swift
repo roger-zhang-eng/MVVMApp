@@ -6,12 +6,9 @@
 //  Copyright © 2017 George Kaimakas. All rights reserved.
 //
 
-import Argo
-import Curry
 import Foundation
-import Runes
 
-public struct Post {
+public struct Post: Codable {
     public let id: Int
     public let userId: Int
     public let title: String?
@@ -33,15 +30,5 @@ public struct Post {
         self.userId = Int(mo.userId)
         self.title = mo.title
         self.body = mo.body
-    }
-}
-
-extension Post: Decodable {
-    public static func decode(_ json: JSON) -> Decoded<Post> {
-        return curry(self.init)
-        <^> json <| "id"
-        <*> json <| "userId"
-        <*> json <|? "title"
-        <*> json <|? "body"
     }
 }

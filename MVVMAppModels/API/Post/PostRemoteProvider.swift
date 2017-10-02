@@ -8,11 +8,8 @@
 
 import Alamofire
 import AlamofireReactiveExtensions
-import Argo
-import Curry
 import Foundation
 import ReactiveSwift
-import Runes
 import enum Result.Result
 import struct Result.AnyError
 
@@ -27,23 +24,19 @@ public class PostRemoteRepository {
     public func fetchPost(id: Int) -> SignalProducer<Post, RemoteProviderError> {
         return Alamofire.request(PostRouter.fetchPost(id))
             .reactive
-            .responseJSON()
-            .promoteErrors(RemoteProviderError.self)
+            .responseData()
+            .promoteError(RemoteProviderError.self)
             .attemptRemoteMap()
-            .map { JSON($0) }
-            .map { Post.decode($0) }
-            .attempDecodeMap()
+			.attemptJsonDecode(Post.self)
     }
     
     public func fetchPosts(page: Int, limit: Int) -> SignalProducer<[Post], RemoteProviderError> {
         return Alamofire.request(PostRouter.fetchPosts(page, limit))
             .reactive
-            .responseJSON()
-            .promoteErrors(RemoteProviderError.self)
+			.responseData()
+            .promoteError(RemoteProviderError.self)
             .attemptRemoteMap()
-            .map { JSON($0) }
-            .map { decodeArray($0) }
-            .attempDecodeMap()
+			.attemptJsonDecode(Array<Post>.self)
     }
 }
 

@@ -6,12 +6,9 @@
 //  Copyright © 2017 George Kaimakas. All rights reserved.
 //
 
-import Argo
-import Curry
 import Foundation
 import Nimble
 import Quick
-import Runes
 import Result
 import ReactiveSwift
 @testable import MVVMAppModels

@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+platform :ios, '10.0'
 
 target 'MVVMApp' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
@@ -16,7 +16,7 @@ target 'MVVMApp' do
     target 'MVVMAppTests' do
         inherit! :search_paths
         # Pods for testing
-        
+
         pod 'Quick'
         pod 'Nimble'
     end
@@ -37,7 +37,7 @@ target 'MVVMAppModels' do
     target 'MVVMAppModelsTests' do
         inherit! :search_paths
         # Pods for testing
-        
+
         pod 'Quick'
         pod 'Nimble'
     end
@@ -50,13 +50,13 @@ target 'MVVMAppViewModels' do
 
 	pod 'ReactiveCocoa', '6.1.0-alpha.2'
 	pod 'ReactiveSwift', '2.1.0-alpha.2'
-  
+
     # Pods for MVVMAppViewModels
 
     target 'MVVMAppViewModelsTests' do
         inherit! :search_paths
         # Pods for testing
-        
+
         pod 'Quick'
         pod 'Nimble'
     end
@@ -75,7 +75,7 @@ target 'MVVMAppViews' do
     target 'MVVMAppViewsTests' do
       inherit! :search_paths
       # Pods for testing
-      
+
       pod 'Quick'
       pod 'Nimble'
     end

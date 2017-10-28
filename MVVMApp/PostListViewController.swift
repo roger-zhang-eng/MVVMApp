@@ -32,7 +32,7 @@ class PostListViewController: UIViewController {
 
 		navigationItem.title = "Posts"
 		loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
-		loadingIndicator.color = UIColor(hexString: "FFC107")
+		loadingIndicator.color = UIColor.white
 		loadingIndicator.hidesWhenStopped = true
 		loadingBarButtonItem = UIBarButtonItem(customView: loadingIndicator)
 		self.navigationItem.setRightBarButton(loadingBarButtonItem, animated: true)

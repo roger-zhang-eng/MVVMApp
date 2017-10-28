@@ -47,6 +47,13 @@
 		1390D6C61E9529C600F67D82 /* PostMO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390D6C51E9529C600F67D82 /* PostMO.swift */; };
 		1390D6C91E952CD600F67D82 /* PostLocalRepositorySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390D6C81E952CD600F67D82 /* PostLocalRepositorySpec.swift */; };
 		1390D6CB1E95325700F67D82 /* UserMO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390D6CA1E95325700F67D82 /* UserMO.swift */; };
+		13974B761FA4C1310076C1DB /* PostNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13974B751FA4C1310076C1DB /* PostNode.swift */; };
+		13974B781FA4C2390076C1DB /* Texture+ReactiveSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13974B771FA4C2390076C1DB /* Texture+ReactiveSwift.swift */; };
+		13974B7A1FA4C2890076C1DB /* NSAttributedString+Reactive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13974B791FA4C2890076C1DB /* NSAttributedString+Reactive.swift */; };
+		13974B7C1FA4C8870076C1DB /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13974B7B1FA4C8870076C1DB /* UIImage.swift */; };
+		13974B7E1FA4CA5E0076C1DB /* PostCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13974B7D1FA4CA5E0076C1DB /* PostCellNode.swift */; };
+		13974B801FA4CB750076C1DB /* ASNodeController+DI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13974B7F1FA4CB750076C1DB /* ASNodeController+DI.swift */; };
+		13974B821FA4CBF00076C1DB /* PostListNodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13974B811FA4CBF00076C1DB /* PostListNodeController.swift */; };
 		13C6C0681E97C96D00F6478F /* CommentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C6C0671E97C96D00F6478F /* CommentProvider.swift */; };
 		13CFB8F11E8A6996001BBBCB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CFB8F01E8A6996001BBBCB /* AppDelegate.swift */; };
 		13CFB8F61E8A6996001BBBCB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13CFB8F41E8A6996001BBBCB /* Main.storyboard */; };
@@ -237,6 +244,13 @@
 		1390D6C51E9529C600F67D82 /* PostMO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostMO.swift; sourceTree = "<group>"; };
 		1390D6C81E952CD600F67D82 /* PostLocalRepositorySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostLocalRepositorySpec.swift; sourceTree = "<group>"; };
 		1390D6CA1E95325700F67D82 /* UserMO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserMO.swift; sourceTree = "<group>"; };
+		13974B751FA4C1310076C1DB /* PostNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostNode.swift; sourceTree = "<group>"; };
+		13974B771FA4C2390076C1DB /* Texture+ReactiveSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Texture+ReactiveSwift.swift"; sourceTree = "<group>"; };
+		13974B791FA4C2890076C1DB /* NSAttributedString+Reactive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Reactive.swift"; sourceTree = "<group>"; };
+		13974B7B1FA4C8870076C1DB /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
+		13974B7D1FA4CA5E0076C1DB /* PostCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCellNode.swift; sourceTree = "<group>"; };
+		13974B7F1FA4CB750076C1DB /* ASNodeController+DI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ASNodeController+DI.swift"; sourceTree = "<group>"; };
+		13974B811FA4CBF00076C1DB /* PostListNodeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListNodeController.swift; sourceTree = "<group>"; };
 		13C6C0671E97C96D00F6478F /* CommentProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentProvider.swift; sourceTree = "<group>"; };
 		13CFB8ED1E8A6996001BBBCB /* MVVMApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVVMApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13CFB8F01E8A6996001BBBCB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -461,6 +475,9 @@
 			isa = PBXGroup;
 			children = (
 				13682D261EC474F900ABE0BA /* UITableView+CellProtocol.swift */,
+				13974B771FA4C2390076C1DB /* Texture+ReactiveSwift.swift */,
+				13974B791FA4C2890076C1DB /* NSAttributedString+Reactive.swift */,
+				13974B7B1FA4C8870076C1DB /* UIImage.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -496,6 +513,7 @@
 			isa = PBXGroup;
 			children = (
 				13F473F21F2FC83E00DF449D /* UIViewController+DI.swift */,
+				13974B7F1FA4CB750076C1DB /* ASNodeController+DI.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -557,6 +575,15 @@
 			path = Post;
 			sourceTree = "<group>";
 		};
+		13974B741FA4C1190076C1DB /* Texture */ = {
+			isa = PBXGroup;
+			children = (
+				13974B751FA4C1310076C1DB /* PostNode.swift */,
+				13974B7D1FA4CA5E0076C1DB /* PostCellNode.swift */,
+			);
+			path = Texture;
+			sourceTree = "<group>";
+		};
 		13CFB8E41E8A6995001BBBCB = {
 			isa = PBXGroup;
 			children = (
@@ -597,6 +624,7 @@
 				13CFB8FC1E8A6996001BBBCB /* Info.plist */,
 				13682D1B1EC46C5A00ABE0BA /* PostListViewController.swift */,
 				13682D3E1EC49DF700ABE0BA /* PostViewController.swift */,
+				13974B811FA4CBF00076C1DB /* PostListNodeController.swift */,
 			);
 			path = MVVMApp;
 			sourceTree = "<group>";
@@ -662,6 +690,7 @@
 		13CFB95B1E8A6AB8001BBBCB /* MVVMAppViews */ = {
 			isa = PBXGroup;
 			children = (
+				13974B741FA4C1190076C1DB /* Texture */,
 				13682D251EC474DC00ABE0BA /* Extensions */,
 				13682D1D1EC4729F00ABE0BA /* TableViewCells */,
 				13CFB95C1E8A6AB8001BBBCB /* MVVMAppViews.h */,
@@ -1297,23 +1326,33 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-MVVMApp/Pods-MVVMApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ASDKFluentExtensions/ASDKFluentExtensions.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireReactiveExtensions/AlamofireReactiveExtensions.framework",
 				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
+				"${BUILT_PRODUCTS_DIR}/PINCache/PINCache.framework",
+				"${BUILT_PRODUCTS_DIR}/PINOperation/PINOperation.framework",
+				"${BUILT_PRODUCTS_DIR}/PINRemoteImage/PINRemoteImage.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveCocoa/ReactiveCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveSwift/ReactiveSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
+				"${BUILT_PRODUCTS_DIR}/Texture/AsyncDisplayKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ASDKFluentExtensions.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireReactiveExtensions.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINCache.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINOperation.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINRemoteImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AsyncDisplayKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1379,17 +1418,29 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-MVVMAppViewsTests/Pods-MVVMAppViewsTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
 				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
+				"${BUILT_PRODUCTS_DIR}/ASDKFluentExtensions/ASDKFluentExtensions.framework",
+				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
+				"${BUILT_PRODUCTS_DIR}/PINCache/PINCache.framework",
+				"${BUILT_PRODUCTS_DIR}/PINOperation/PINOperation.framework",
+				"${BUILT_PRODUCTS_DIR}/PINRemoteImage/PINRemoteImage.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveCocoa/ReactiveCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveSwift/ReactiveSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/Texture/AsyncDisplayKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ASDKFluentExtensions.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINCache.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINOperation.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINRemoteImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AsyncDisplayKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1504,6 +1555,8 @@
 			files = (
 				13682D3F1EC49DF700ABE0BA /* PostViewController.swift in Sources */,
 				13F473F31F2FC83E00DF449D /* UIViewController+DI.swift in Sources */,
+				13974B821FA4CBF00076C1DB /* PostListNodeController.swift in Sources */,
+				13974B801FA4CB750076C1DB /* ASNodeController+DI.swift in Sources */,
 				13682D1C1EC46C5A00ABE0BA /* PostListViewController.swift in Sources */,
 				13CFB8F11E8A6996001BBBCB /* AppDelegate.swift in Sources */,
 			);
@@ -1591,10 +1644,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				13682D2C1EC4792A00ABE0BA /* TitleTableViewCell.swift in Sources */,
+				13974B7E1FA4CA5E0076C1DB /* PostCellNode.swift in Sources */,
+				13974B7C1FA4C8870076C1DB /* UIImage.swift in Sources */,
 				1315D7711F82D6B500052B5D /* EmailTableViewCell.swift in Sources */,
 				13682D271EC474F900ABE0BA /* UITableView+CellProtocol.swift in Sources */,
 				13682D311EC47A5900ABE0BA /* BodyTableViewCell.swift in Sources */,
 				13682D221EC4730E00ABE0BA /* UserTableViewCell.swift in Sources */,
+				13974B761FA4C1310076C1DB /* PostNode.swift in Sources */,
+				13974B7A1FA4C2890076C1DB /* NSAttributedString+Reactive.swift in Sources */,
+				13974B781FA4C2390076C1DB /* Texture+ReactiveSwift.swift in Sources */,
 				13682D241EC4733800ABE0BA /* CellProtocol.swift in Sources */,
 				13682D361EC4815600ABE0BA /* PagingTableViewCell.swift in Sources */,
 			);

@@ -6,6 +6,7 @@
 //  Copyright © 2017 George Kaimakas. All rights reserved.
 //
 
+import AsyncDisplayKit
 import ChameleonFramework
 import MVVMAppModels
 import MVVMAppViewModels
@@ -88,10 +89,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 		UINavigationBar.appearance().tintColor = UIColor(hexString: "#FAFAFA")
 		UINavigationBar.appearance().titleTextAttributes = [
-			NSAttributedStringKey.foregroundColor : UIColor(hexString: "FFC107")!
+			NSAttributedStringKey.foregroundColor : UIColor(hexString: "FAFAFA")!
 		]
-		UINavigationBar.appearance().barTintColor = UIColor(hexString: "#F44336")
+		UINavigationBar.appearance().barTintColor = UIColor.flatMintDark
 		UINavigationBar.appearance().isTranslucent = false
+
+		let asyncNavigationController = UINavigationController(rootViewController: PostListNodeController())
+
+		window = UIWindow()
+		window?.backgroundColor = .white
+		window?.rootViewController = asyncNavigationController
+		window?.makeKeyAndVisible()
+
+		ASDisableLogging()
         
         return true
     }

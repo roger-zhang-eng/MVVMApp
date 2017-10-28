@@ -1,5 +1,5 @@
 //
-//  PostNodeCell.swift
+//  WrapperNode.swift
 //  MVVMAppViews
 //
 //  Created by George Kaimakas on 28/10/2017.
@@ -16,19 +16,17 @@ import ReactiveSwift
 import Result
 import UIKit
 
-public class PostCellNode: ASCellNode {
+public class WrapperNode<Node: ASDisplayNode>: ASDisplayNode {
 
-	let postNode: PostNode
+	let wrappedNode: Node
+	let inset: UIEdgeInsets
 
-	public init(viewModel: PostViewModel) {
+	public init(wrapped: Node, inset: UIEdgeInsets = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)) {
 
-		postNode = PostNode(viewModel: viewModel)
+		self.wrappedNode = wrapped
+		self.inset = inset
 
 		super.init()
-
-		self.postNode.cornerRadius = 12
-		self.postNode.clipsToBounds = true
-		self.backgroundColor = UIColor.flatWhite
 
 		self.automaticallyManagesSubnodes = true
 	}
@@ -37,8 +35,8 @@ public class PostCellNode: ASCellNode {
 
 		let container = ASStackLayoutSpec
 			.vertical()
-			.withInset(UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16))
-			.withChildren([postNode])
+			.withInset(inset)
+			.withChildren([wrappedNode])
 
 		return container
 	}

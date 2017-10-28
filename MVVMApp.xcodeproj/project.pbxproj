@@ -51,9 +51,11 @@
 		13974B781FA4C2390076C1DB /* Texture+ReactiveSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13974B771FA4C2390076C1DB /* Texture+ReactiveSwift.swift */; };
 		13974B7A1FA4C2890076C1DB /* NSAttributedString+Reactive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13974B791FA4C2890076C1DB /* NSAttributedString+Reactive.swift */; };
 		13974B7C1FA4C8870076C1DB /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13974B7B1FA4C8870076C1DB /* UIImage.swift */; };
-		13974B7E1FA4CA5E0076C1DB /* PostCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13974B7D1FA4CA5E0076C1DB /* PostCellNode.swift */; };
 		13974B801FA4CB750076C1DB /* ASNodeController+DI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13974B7F1FA4CB750076C1DB /* ASNodeController+DI.swift */; };
 		13974B821FA4CBF00076C1DB /* PostListNodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13974B811FA4CBF00076C1DB /* PostListNodeController.swift */; };
+		13974B8A1FA50D980076C1DB /* CommentNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13974B891FA50D980076C1DB /* CommentNode.swift */; };
+		13974B8C1FA512C90076C1DB /* WrapperCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13974B8B1FA512C90076C1DB /* WrapperCellNode.swift */; };
+		13974B8E1FA5148D0076C1DB /* WrapperNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13974B8D1FA5148D0076C1DB /* WrapperNode.swift */; };
 		13C6C0681E97C96D00F6478F /* CommentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C6C0671E97C96D00F6478F /* CommentProvider.swift */; };
 		13CFB8F11E8A6996001BBBCB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CFB8F01E8A6996001BBBCB /* AppDelegate.swift */; };
 		13CFB8F61E8A6996001BBBCB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13CFB8F41E8A6996001BBBCB /* Main.storyboard */; };
@@ -248,9 +250,11 @@
 		13974B771FA4C2390076C1DB /* Texture+ReactiveSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Texture+ReactiveSwift.swift"; sourceTree = "<group>"; };
 		13974B791FA4C2890076C1DB /* NSAttributedString+Reactive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Reactive.swift"; sourceTree = "<group>"; };
 		13974B7B1FA4C8870076C1DB /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
-		13974B7D1FA4CA5E0076C1DB /* PostCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCellNode.swift; sourceTree = "<group>"; };
 		13974B7F1FA4CB750076C1DB /* ASNodeController+DI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ASNodeController+DI.swift"; sourceTree = "<group>"; };
 		13974B811FA4CBF00076C1DB /* PostListNodeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListNodeController.swift; sourceTree = "<group>"; };
+		13974B891FA50D980076C1DB /* CommentNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentNode.swift; sourceTree = "<group>"; };
+		13974B8B1FA512C90076C1DB /* WrapperCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrapperCellNode.swift; sourceTree = "<group>"; };
+		13974B8D1FA5148D0076C1DB /* WrapperNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrapperNode.swift; sourceTree = "<group>"; };
 		13C6C0671E97C96D00F6478F /* CommentProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentProvider.swift; sourceTree = "<group>"; };
 		13CFB8ED1E8A6996001BBBCB /* MVVMApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVVMApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13CFB8F01E8A6996001BBBCB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -579,7 +583,9 @@
 			isa = PBXGroup;
 			children = (
 				13974B751FA4C1310076C1DB /* PostNode.swift */,
-				13974B7D1FA4CA5E0076C1DB /* PostCellNode.swift */,
+				13974B891FA50D980076C1DB /* CommentNode.swift */,
+				13974B8B1FA512C90076C1DB /* WrapperCellNode.swift */,
+				13974B8D1FA5148D0076C1DB /* WrapperNode.swift */,
 			);
 			path = Texture;
 			sourceTree = "<group>";
@@ -1644,10 +1650,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				13682D2C1EC4792A00ABE0BA /* TitleTableViewCell.swift in Sources */,
-				13974B7E1FA4CA5E0076C1DB /* PostCellNode.swift in Sources */,
 				13974B7C1FA4C8870076C1DB /* UIImage.swift in Sources */,
+				13974B8C1FA512C90076C1DB /* WrapperCellNode.swift in Sources */,
 				1315D7711F82D6B500052B5D /* EmailTableViewCell.swift in Sources */,
 				13682D271EC474F900ABE0BA /* UITableView+CellProtocol.swift in Sources */,
+				13974B8E1FA5148D0076C1DB /* WrapperNode.swift in Sources */,
 				13682D311EC47A5900ABE0BA /* BodyTableViewCell.swift in Sources */,
 				13682D221EC4730E00ABE0BA /* UserTableViewCell.swift in Sources */,
 				13974B761FA4C1310076C1DB /* PostNode.swift in Sources */,
@@ -1655,6 +1662,7 @@
 				13974B781FA4C2390076C1DB /* Texture+ReactiveSwift.swift in Sources */,
 				13682D241EC4733800ABE0BA /* CellProtocol.swift in Sources */,
 				13682D361EC4815600ABE0BA /* PagingTableViewCell.swift in Sources */,
+				13974B8A1FA50D980076C1DB /* CommentNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

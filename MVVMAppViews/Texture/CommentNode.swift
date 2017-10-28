@@ -72,7 +72,7 @@ public class CommentNode: ASDisplayNode {
 
 	private let avatarNode: ASNetworkImageNode = {
 		let node = ASNetworkImageNode()
-		node.imageModificationBlock = ASImageNodeRoundBorderModificationBlock(0, nil)
+		node.imageModificationBlock = ASImageNodeRoundBorderModificationBlock(4, .white)
 		node.contentMode = UIViewContentMode.scaleAspectFill
 		return node
 	}()
@@ -96,6 +96,7 @@ public class CommentNode: ASDisplayNode {
 			.producer
 			.map { $0 % PostNode.avatarUrls.count }
 			.map { PostNode.avatarUrls[$0] }
+
 	}
 
 	override public func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
@@ -107,10 +108,10 @@ public class CommentNode: ASDisplayNode {
 					.vertical()
 					.withChildren([
 						avatarNode
-							.withPreferredSize(CGSize(width: 24, height: 24))])
+							.withPreferredSize(CGSize(width: 32, height: 32))])
 					.withInset(UIEdgeInsets(top: 16, left: 0, bottom: 0, right: 0)),
 				bubble
-					.withFlexShrink(1)
+					.withFlexShrink(2)
 				])
 
 		return layout

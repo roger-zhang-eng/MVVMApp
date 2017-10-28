@@ -87,12 +87,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             .inObjectScope(.container)
 
 
-		UINavigationBar.appearance().tintColor = UIColor(hexString: "#FAFAFA")
+//		UINavigationBar.appearance().tintColor = UIColor(hexString: "#FAFAFA")
 		UINavigationBar.appearance().titleTextAttributes = [
-			NSAttributedStringKey.foregroundColor : UIColor(hexString: "FAFAFA")!
+			NSAttributedStringKey.foregroundColor : UIColor.flatMintDark
 		]
-		UINavigationBar.appearance().barTintColor = UIColor.flatMintDark
-		UINavigationBar.appearance().isTranslucent = false
+//		UINavigationBar.appearance().barTintColor = UIColor.flatMintDark
 
 		let asyncNavigationController = UINavigationController(rootViewController: PostListNodeController())
 

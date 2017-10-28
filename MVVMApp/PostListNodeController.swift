@@ -39,7 +39,7 @@ class PostListNodeController: ASViewController<ASTableNode> {
 
 		navigationItem.title = "MVVMApp"
 		loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
-		loadingIndicator.color = UIColor.white
+		loadingIndicator.color = UIColor.flatMintDark
 		loadingIndicator.hidesWhenStopped = true
 		loadingBarButtonItem = UIBarButtonItem(customView: loadingIndicator)
 		self.navigationItem.setRightBarButton(loadingBarButtonItem, animated: true)
@@ -62,6 +62,7 @@ class PostListNodeController: ASViewController<ASTableNode> {
 			.on(value: { print($0.count) })
 
 		self.view.backgroundColor = UIColor.flatWhite
+		self.node.contentInset = UIEdgeInsets(top: 4, left: 0, bottom: 12, right: 0)
 	}
 
 	func insertSections(newCount: Int) {
@@ -97,7 +98,7 @@ extension PostListNodeController: ASTableDataSource {
 			return {
 				let node = PostNode(viewModel: post)
 				node.cornerRadius = 12
-				let wrapper = WrapperCellNode<PostNode>(wrapped: node, inset: UIEdgeInsets(top: 16, left: 16, bottom: 4, right: 16))
+				let wrapper = WrapperCellNode<PostNode>(wrapped: node, inset: UIEdgeInsets(top: 12, left: 16, bottom: 4, right: 16))
 				wrapper.cornerRoundingType = .precomposited
 				return wrapper
 			}
@@ -107,7 +108,7 @@ extension PostListNodeController: ASTableDataSource {
 			let comment = viewModel.posts.value[indexPath.section].comments.value[indexPath.row-1]
 			return {
 				let node = CommentNode(viewModel: comment)
-				return WrapperCellNode<CommentNode>(wrapped: node, inset: UIEdgeInsets(top: 4, left: 24, bottom: 4, right: 16))
+				return WrapperCellNode<CommentNode>(wrapped: node, inset: UIEdgeInsets(top: 2, left: 24, bottom: 4, right: 24))
 			}
 		}
 
@@ -144,6 +145,10 @@ extension PostListNodeController: ASTableDelegate {
 			post.fetchComments.isExecuting.value == false,
 			post.fetchComments.isEnabled.value == true {
 
+
+			loadingIndicator.reactive.isAnimating <~ post
+				.fetchComments
+				.isExecuting
 
 			reactive.updateCommentList(section: indexPath.section) <~ post
 				.fetchComments

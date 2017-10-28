@@ -18,12 +18,12 @@ import Result
 public class PostNode: ASDisplayNode {
 	static let avatarUrls = [
 		"https://pbs.twimg.com/profile_images/2571612286/qzdvjpfbdnwzeo4rqziw_400x400.jpeg",
+		"http://images2.fanpop.com/image/photos/9000000/Zoidberg-dr-zoidberg-9032706-1024-768.jpg",
 		"https://cdn3.whatculture.com/images/2013/10/mom-futurama.png",
 		"https://upload.wikimedia.org/wikipedia/it/1/12/Amy_wong_-_futurama.png",
-		"http://images2.fanpop.com/image/photos/9000000/Zoidberg-dr-zoidberg-9032706-1024-768.jpg",
-		"https://1835441770.rsc.cdn77.org/splitsider.com/wp-content/uploads/sites/2/2016/08/zappbrannigan-640x359.jpg",
 		"https://www.walldevil.com/wallpapers/a89/fry-philip-j.-fry-futurama.jpg",
 		"https://upload.wikimedia.org/wikipedia/it/d/d4/Turanga_Leela.png",
+		"https://1835441770.rsc.cdn77.org/splitsider.com/wp-content/uploads/sites/2/2016/08/zappbrannigan-640x359.jpg",
 		"https://i.stack.imgur.com/Itky1.jpg",
 		"http://www.hookandneedles.com/wp-content/uploads/2008/11/nibbler1.jpg"
 		].map { URL(string: $0)! }

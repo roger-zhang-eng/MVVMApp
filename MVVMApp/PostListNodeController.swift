@@ -37,7 +37,7 @@ class PostListNodeController: ASViewController<ASTableNode> {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		navigationItem.title = "Posts"
+		navigationItem.title = "MVVMApp"
 		loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
 		loadingIndicator.color = UIColor.white
 		loadingIndicator.hidesWhenStopped = true
@@ -59,15 +59,13 @@ class PostListNodeController: ASViewController<ASTableNode> {
 		self.reactive.updatePostList <~ viewModel
 			.fetchPosts
 			.values
+			.on(value: { print($0.count) })
 
 		self.view.backgroundColor = UIColor.flatWhite
 	}
 
 	func insertSections(newCount: Int) {
 		let indexRange = (viewModel.posts.value.count - newCount..<viewModel.posts.value.count)
-//		let indexPaths = indexRange.map { IndexPath(row: 0, section: $0) }
-//		node.insertRows(at: indexPaths, with: .none)
-
 		let set = IndexSet(integersIn: indexRange)
 		node.insertSections(set, with: .fade)
 	}
@@ -139,15 +137,22 @@ extension PostListNodeController: ASTableDelegate {
 	}
 
 	func tableNode(_ tableNode: ASTableNode, didSelectRowAt indexPath: IndexPath) {
-		let post = viewModel.posts.value[indexPath.section]
 
-		reactive.updateCommentList(section: indexPath.section) <~ post
-			.fetchComments
-			.values
+		if indexPath.row == 0,
+			case let post = viewModel.posts.value[indexPath.section],
+			post.comments.value.count == 0,
+			post.fetchComments.isExecuting.value == false,
+			post.fetchComments.isEnabled.value == true {
 
-		post.fetchComments
-			.apply()
-			.start()
+
+			reactive.updateCommentList(section: indexPath.section) <~ post
+				.fetchComments
+				.values
+
+			post.fetchComments
+				.apply()
+				.start()
+		}
 	}
 }
 

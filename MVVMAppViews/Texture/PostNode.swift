@@ -16,26 +16,27 @@ import ReactiveSwift
 import Result
 
 public class PostNode: ASDisplayNode {
-	static let avatarColors = [
-		UIColor.flatRed,
-		UIColor.flatPlum,
-		UIColor.flatOrange,
-		UIColor.flatPurple,
-		UIColor.flatYellow,
-		UIColor.flatMint,
-		UIColor.flatTeal,
-		UIColor.flatSkyBlue
-	]
+	static let avatarUrls = [
+		"https://pbs.twimg.com/profile_images/2571612286/qzdvjpfbdnwzeo4rqziw_400x400.jpeg",
+		"https://cdn3.whatculture.com/images/2013/10/mom-futurama.png",
+		"https://upload.wikimedia.org/wikipedia/it/1/12/Amy_wong_-_futurama.png",
+		"http://images2.fanpop.com/image/photos/9000000/Zoidberg-dr-zoidberg-9032706-1024-768.jpg",
+		"https://1835441770.rsc.cdn77.org/splitsider.com/wp-content/uploads/sites/2/2016/08/zappbrannigan-640x359.jpg",
+		"https://www.walldevil.com/wallpapers/a89/fry-philip-j.-fry-futurama.jpg",
+		"https://upload.wikimedia.org/wikipedia/it/d/d4/Turanga_Leela.png",
+		"https://i.stack.imgur.com/Itky1.jpg",
+		"http://www.hookandneedles.com/wp-content/uploads/2008/11/nibbler1.jpg"
+		].map { URL(string: $0)! }
 
 	private let viewModel: PostViewModel
 
 	private let titleNode = ASTextNode()
 	private let usernameNode = ASTextNode()
 	private let bodyNode = ASTextNode()
-	private let avatarNode: ASImageNode = {
-		let node = ASImageNode()
+	private let avatarNode: ASNetworkImageNode = {
+		let node = ASNetworkImageNode()
 		node.imageModificationBlock = ASImageNodeRoundBorderModificationBlock(0, nil)
-		node.contentMode = UIViewContentMode.scaleAspectFit
+		node.contentMode = UIViewContentMode.scaleAspectFill
 		return node
 	}()
 
@@ -45,7 +46,7 @@ public class PostNode: ASDisplayNode {
 		return node
 	}()
 
-	var commenters: [ASImageNode] = []
+	var commenters: [ASNetworkImageNode] = []
 
 	public init(viewModel: PostViewModel) {
 		self.viewModel = viewModel
@@ -65,16 +66,14 @@ public class PostNode: ASDisplayNode {
 			.boldAttributedString(color: UIColor.darkGray, size: 20)
 			.take(during: reactive.lifetime)
 
-		avatarNode.reactive.image <~ viewModel
+		avatarNode.reactive.url <~ viewModel
 			.user
 			.producer
-			.flatMap(.latest) { user -> SignalProducer<String?, NoError> in
-				return user.username.producer
+			.flatMap(.latest) { user in
+				return user.id.producer
 			}
-			.map { $0 ?? "[Username Not Available]" }
-			.map { abs($0.hashValue) % PostNode.avatarColors.count }
-			.map { PostNode.avatarColors[$0] }
-			.map { UIImage.image(with: $0, size: CGSize(width: 96, height: 96)) }
+			.map { abs($0) % PostNode.avatarUrls.count }
+			.map { PostNode.avatarUrls[$0] }
 
 		seperatorNode.image = UIImage.image(with: UIColor.flatWhite, size: CGSize(width: 1000, height: 1))
 
@@ -99,9 +98,16 @@ public class PostNode: ASDisplayNode {
 			.values
 			.observeValues { (comments) in
 				comments
-					.map { $0.name.value ?? "[Username Not Available]" }
-					.forEach({ name in
-						self.commenters.append(self.generateCommenterAvatar(for: name))
+					.map { $0.id.value % PostNode.avatarUrls.count }
+					.map { id -> ASNetworkImageNode in
+						let node = ASNetworkImageNode()
+						node.imageModificationBlock = ASImageNodeRoundBorderModificationBlock(0, nil)
+						node.contentMode = UIViewContentMode.scaleAspectFill
+						node.url = PostNode.avatarUrls[id]
+						return node
+					}
+					.forEach({ image in
+						self.commenters.append(image)
 					})
 
 				self.invalidateCalculatedLayout()
@@ -118,7 +124,7 @@ public class PostNode: ASDisplayNode {
 	override public func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
 
 		commenters
-			.forEach { $0.withPreferredSize(CGSize(width: 12, height: 12)) }
+			.forEach { $0.withPreferredSize(CGSize(width: 24, height: 24)) }
 
 		let commentersListLayout = ASStackLayoutSpec
 			.horizontal()
@@ -147,7 +153,7 @@ public class PostNode: ASDisplayNode {
 				.withSpacing(8)
 				.withChildren([
 					avatarNode
-						.withPreferredSize(CGSize(width: 24, height: 24)),
+						.withPreferredSize(CGSize(width: 48, height: 48)),
 					usernameNode
 					]),
 			bodyNode
@@ -162,18 +168,5 @@ public class PostNode: ASDisplayNode {
 			.withSpacing(8)
 			.withChildren(innerLayouts)
 			.withInset(UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16))
-	}
-
-	private func generateCommenterAvatar(for string: String) -> ASImageNode {
-		let node = ASImageNode()
-		node.imageModificationBlock = ASImageNodeRoundBorderModificationBlock(0, nil)
-
-		let index = abs(string.hashValue) % PostNode.avatarColors.count
-		let image = UIImage.image(with: PostNode.avatarColors[index], size: CGSize(width: 96, height: 96))
-		node.image = image
-
-		node.contentMode = UIViewContentMode.scaleAspectFit
-		return node
-
 	}
 }

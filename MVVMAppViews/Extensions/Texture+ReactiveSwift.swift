@@ -23,3 +23,9 @@ public extension Reactive where Base: ASImageNode {
 		return makeBindingTarget { $0.image = $1 }
 	}
 }
+
+public extension Reactive where Base: ASNetworkImageNode {
+	var url: BindingTarget<URL> {
+		return makeBindingTarget { $0.url = $1 }
+	}
+}

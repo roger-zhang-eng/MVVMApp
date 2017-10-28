@@ -22,8 +22,8 @@ public class CommentNode: ASDisplayNode {
 		let usernameNode = ASTextNode()
 		let bodyNode = ASTextNode()
 
-		let seperatorNode: ASImageNode = {
-			let node = ASImageNode()
+		let seperatorNode: ASNetworkImageNode = {
+			let node = ASNetworkImageNode()
 			node.contentMode = UIViewContentMode.scaleAspectFit
 			return node
 		}()
@@ -70,10 +70,10 @@ public class CommentNode: ASDisplayNode {
 		}
 	}
 
-	private let avatarNode: ASImageNode = {
-		let node = ASImageNode()
+	private let avatarNode: ASNetworkImageNode = {
+		let node = ASNetworkImageNode()
 		node.imageModificationBlock = ASImageNodeRoundBorderModificationBlock(0, nil)
-		node.contentMode = UIViewContentMode.scaleAspectFit
+		node.contentMode = UIViewContentMode.scaleAspectFill
 		return node
 	}()
 
@@ -91,13 +91,11 @@ public class CommentNode: ASDisplayNode {
 
 		self.backgroundColor = .clear
 
-		avatarNode.reactive.image <~ viewModel
-			.name
+		avatarNode.reactive.url <~ viewModel
+			.id
 			.producer
-			.map { $0 ?? "[Username Not Available]" }
-			.map { abs($0.hashValue) % PostNode.avatarColors.count }
-			.map { PostNode.avatarColors[$0] }
-			.map { UIImage.image(with: $0, size: CGSize(width: 96, height: 96)) }
+			.map { $0 % PostNode.avatarUrls.count }
+			.map { PostNode.avatarUrls[$0] }
 	}
 
 	override public func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {

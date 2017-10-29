@@ -107,7 +107,7 @@ extension PostListNodeController: ASTableDataSource {
 			let comment = viewModel.posts.value[indexPath.section].comments.value[indexPath.row-1]
 			return {
 				let node = CommentNode(viewModel: comment)
-				return WrapperCellNode<CommentNode>(wrapped: node, inset: UIEdgeInsets(top: 2, left: 24, bottom: 4, right: 24))
+				return WrapperCellNode<CommentNode>(wrapped: node, inset: UIEdgeInsets(top: 2, left: 32, bottom: 4, right: 16))
 			}
 		}
 

@@ -18,10 +18,10 @@ import Result
 public class PostNode: ASDisplayNode {
 	static let avatarUrls = [
 		"https://pbs.twimg.com/profile_images/2571612286/qzdvjpfbdnwzeo4rqziw_400x400.jpeg",
+		"https://www.walldevil.com/wallpapers/a89/fry-philip-j.-fry-futurama.jpg",
 		"http://images2.fanpop.com/image/photos/9000000/Zoidberg-dr-zoidberg-9032706-1024-768.jpg",
 		"https://cdn3.whatculture.com/images/2013/10/mom-futurama.png",
 		"https://upload.wikimedia.org/wikipedia/it/1/12/Amy_wong_-_futurama.png",
-		"https://www.walldevil.com/wallpapers/a89/fry-philip-j.-fry-futurama.jpg",
 		"https://upload.wikimedia.org/wikipedia/it/d/d4/Turanga_Leela.png",
 		"https://1835441770.rsc.cdn77.org/splitsider.com/wp-content/uploads/sites/2/2016/08/zappbrannigan-640x359.jpg",
 		"https://i.stack.imgur.com/Itky1.jpg",
@@ -31,8 +31,8 @@ public class PostNode: ASDisplayNode {
 	private let viewModel: PostViewModel
 
 	private let titleNode = ASTextNode()
+	private let nameNode = ASTextNode()
 	private let usernameNode = ASTextNode()
-	private let emailNode = ASTextNode()
 	private let bodyNode = ASTextNode()
 	private let avatarNode: ASNetworkImageNode = {
 		let node = ASNetworkImageNode()
@@ -61,9 +61,9 @@ public class PostNode: ASDisplayNode {
 		super.init()
 
 		addSubnode(titleNode)
-		addSubnode(usernameNode)
+		addSubnode(nameNode)
 		addSubnode(userInfoSeperatorNode)
-		addSubnode(emailNode)
+		addSubnode(usernameNode)
 		addSubnode(bodyNode)
 		addSubnode(avatarNode)
 		addSubnode(commentersSeperatorNode)
@@ -71,7 +71,7 @@ public class PostNode: ASDisplayNode {
 		titleNode.reactive.attributedText <~ viewModel
 			.title
 			.producer
-			.map { $0 ?? "[Title Not Availabe]" }
+			.map { $0 ?? "[Title Not Available]" }
 			.boldAttributedString(color: UIColor.darkGray, size: 20)
 			.take(during: reactive.lifetime)
 
@@ -87,30 +87,31 @@ public class PostNode: ASDisplayNode {
 		userInfoSeperatorNode.image = UIImage.image(with: UIColor.flatWhite, size: CGSize(width: 1000, height: 1))
 		commentersSeperatorNode.image = UIImage.image(with: UIColor.flatWhite, size: CGSize(width: 1000, height: 1))
 
+		nameNode.reactive.attributedText <~ viewModel
+			.user
+			.producer
+			.flatMap(.latest) { user -> SignalProducer<String?, NoError> in
+				return user.name.producer
+			}
+			.map { $0 ?? "[Name Not Available]" }
+			.boldAttributedString(color: UIColor.darkGray, size: 16)
+			.take(during: reactive.lifetime)
+
 		usernameNode.reactive.attributedText <~ viewModel
 			.user
 			.producer
 			.flatMap(.latest) { user -> SignalProducer<String?, NoError> in
 				return user.username.producer
 			}
-			.map { $0 ?? "[Username Not Available]" }
-			.boldAttributedString(color: UIColor.darkGray, size: 16)
-			.take(during: reactive.lifetime)
-
-		emailNode.reactive.attributedText <~ viewModel
-			.user
-			.producer
-			.flatMap(.latest) { user -> SignalProducer<String?, NoError> in
-				return user.email.producer
-			}
-			.map { $0 ?? "[Email Not Available]" }
+			.map { $0 ?? "[Usernmae Not Available]" }
+			.map { "@\($0)" }
 			.attributedString(color: UIColor.darkGray, size: 12)
 			.take(during: reactive.lifetime)
 
 		bodyNode.reactive.attributedText <~ viewModel
 			.body
 			.producer
-			.map { $0 ?? "[Body Not Availabe]" }
+			.map { $0 ?? "[Body Not Available]" }
 			.attributedString(color: UIColor.flatGrayDark, size: 16)
 
 		viewModel
@@ -178,9 +179,9 @@ public class PostNode: ASDisplayNode {
 						.vertical()
 						.withSpacing(2)
 						.withChildren([
-							usernameNode,
+							nameNode,
 							userInfoSeperatorNode,
-							emailNode
+							usernameNode
 							])
 						.withFlexShrink(1)
 					]),

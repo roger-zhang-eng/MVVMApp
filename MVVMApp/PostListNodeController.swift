@@ -59,7 +59,6 @@ class PostListNodeController: ASViewController<ASTableNode> {
 		self.reactive.updatePostList <~ viewModel
 			.fetchPosts
 			.values
-			.on(value: { print($0.count) })
 
 		self.view.backgroundColor = UIColor.flatWhite
 		self.node.contentInset = UIEdgeInsets(top: 4, left: 0, bottom: 12, right: 0)

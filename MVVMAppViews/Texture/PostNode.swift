@@ -32,6 +32,7 @@ public class PostNode: ASDisplayNode {
 
 	private let titleNode = ASTextNode()
 	private let usernameNode = ASTextNode()
+	private let emailNode = ASTextNode()
 	private let bodyNode = ASTextNode()
 	private let avatarNode: ASNetworkImageNode = {
 		let node = ASNetworkImageNode()
@@ -40,13 +41,19 @@ public class PostNode: ASDisplayNode {
 		return node
 	}()
 
-	var seperatorNode: ASImageNode = {
+	private var userInfoSeperatorNode: ASImageNode = {
 		let node = ASImageNode()
 		node.contentMode = UIViewContentMode.scaleAspectFit
 		return node
 	}()
 
-	var commenters: [ASNetworkImageNode] = []
+	private var commentersSeperatorNode: ASImageNode = {
+		let node = ASImageNode()
+		node.contentMode = UIViewContentMode.scaleAspectFit
+		return node
+	}()
+
+	private var commenters: [ASNetworkImageNode] = []
 
 	public init(viewModel: PostViewModel) {
 		self.viewModel = viewModel
@@ -55,9 +62,11 @@ public class PostNode: ASDisplayNode {
 
 		addSubnode(titleNode)
 		addSubnode(usernameNode)
+		addSubnode(userInfoSeperatorNode)
+		addSubnode(emailNode)
 		addSubnode(bodyNode)
 		addSubnode(avatarNode)
-		addSubnode(seperatorNode)
+		addSubnode(commentersSeperatorNode)
 
 		titleNode.reactive.attributedText <~ viewModel
 			.title
@@ -75,7 +84,8 @@ public class PostNode: ASDisplayNode {
 			.map { abs($0) % PostNode.avatarUrls.count }
 			.map { PostNode.avatarUrls[$0] }
 
-		seperatorNode.image = UIImage.image(with: UIColor.flatWhite, size: CGSize(width: 1000, height: 1))
+		userInfoSeperatorNode.image = UIImage.image(with: UIColor.flatWhite, size: CGSize(width: 1000, height: 1))
+		commentersSeperatorNode.image = UIImage.image(with: UIColor.flatWhite, size: CGSize(width: 1000, height: 1))
 
 		usernameNode.reactive.attributedText <~ viewModel
 			.user
@@ -87,11 +97,21 @@ public class PostNode: ASDisplayNode {
 			.boldAttributedString(color: UIColor.darkGray, size: 16)
 			.take(during: reactive.lifetime)
 
+		emailNode.reactive.attributedText <~ viewModel
+			.user
+			.producer
+			.flatMap(.latest) { user -> SignalProducer<String?, NoError> in
+				return user.email.producer
+			}
+			.map { $0 ?? "[Email Not Available]" }
+			.attributedString(color: UIColor.darkGray, size: 12)
+			.take(during: reactive.lifetime)
+
 		bodyNode.reactive.attributedText <~ viewModel
 			.body
 			.producer
 			.map { $0 ?? "[Body Not Availabe]" }
-			.attributedString(color: UIColor.flatGrayDark, size: 12)
+			.attributedString(color: UIColor.flatGrayDark, size: 16)
 
 		viewModel
 			.fetchComments
@@ -124,7 +144,7 @@ public class PostNode: ASDisplayNode {
 	override public func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
 
 		commenters
-			.forEach { $0.withPreferredSize(CGSize(width: 24, height: 24)) }
+			.forEach { $0.withPreferredSize(CGSize(width: 16, height: 16)) }
 
 		let commentersListLayout = ASStackLayoutSpec
 			.horizontal()
@@ -140,7 +160,7 @@ public class PostNode: ASDisplayNode {
 			.vertical()
 			.withSpacing(8)
 			.withChildren([
-				seperatorNode,
+				commentersSeperatorNode,
 				commentersListLayout
 					.withInset(UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 4))
 				])
@@ -154,7 +174,15 @@ public class PostNode: ASDisplayNode {
 				.withChildren([
 					avatarNode
 						.withPreferredSize(CGSize(width: 48, height: 48)),
-					usernameNode
+					ASStackLayoutSpec
+						.vertical()
+						.withSpacing(2)
+						.withChildren([
+							usernameNode,
+							userInfoSeperatorNode,
+							emailNode
+							])
+						.withFlexShrink(1)
 					]),
 			bodyNode
 		]

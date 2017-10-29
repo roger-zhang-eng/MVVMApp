@@ -53,7 +53,7 @@ public class CommentNode: ASDisplayNode {
 				.body
 				.producer
 				.map { $0 ?? "[Body Not Availabe]" }
-				.attributedString(color: UIColor.flatGrayDark, size: 12)
+				.attributedString(color: UIColor.flatGrayDark, size: 16)
 		}
 
 		override public func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
@@ -83,8 +83,8 @@ public class CommentNode: ASDisplayNode {
 		self.bubble = BubbleNode(viewModel: viewModel)
 		super.init()
 
-		self.addSubnode(avatarNode)
 		self.addSubnode(bubble)
+		self.addSubnode(avatarNode)
 
 		self.bubble.cornerRadius = 12
 		self.cornerRoundingType = .precomposited

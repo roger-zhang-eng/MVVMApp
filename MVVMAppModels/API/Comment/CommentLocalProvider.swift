@@ -8,6 +8,7 @@
 
 import CoreData
 import Foundation
+import MVVMAppCommon
 import ReactiveCocoa
 import ReactiveSwift
 import Result

@@ -8,6 +8,7 @@
 
 import Foundation
 import MVVMAppModels
+import MVVMAppCommon
 import ReactiveCocoa
 import ReactiveSwift
 import Result

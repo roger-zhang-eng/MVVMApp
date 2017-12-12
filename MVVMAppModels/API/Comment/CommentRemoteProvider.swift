@@ -9,6 +9,7 @@
 import Alamofire
 import AlamofireReactiveExtensions
 import Foundation
+import MVVMAppCommon
 import ReactiveSwift
 import enum Result.Result
 import struct Result.AnyError

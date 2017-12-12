@@ -31,6 +31,12 @@ target 'MVVMApp' do
 
 end
 
+target 'MVVMAppCommon' do
+    # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+    use_frameworks!
+
+end
+
 target 'MVVMAppModels' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
     use_frameworks!

@@ -110,7 +110,11 @@ extension PostListNodeController: ASTableDataSource {
 			return {
 				let node = PostNode(viewModel: post)
 				node.cornerRadius = 12
-				let wrapper = WrapperCellNode<PostNode>(wrapped: node, inset: UIEdgeInsets(top: 12, left: 16, bottom: 4, right: 16))
+				let wrapper = WrapperCellNode<PostNode>(wrapped: node,
+				                                        inset: UIEdgeInsets(top: 12,
+				                                                            left: 16,
+				                                                            bottom: 4,
+				                                                            right: 16))
 				wrapper.cornerRoundingType = .precomposited
 				return wrapper
 			}
@@ -120,7 +124,11 @@ extension PostListNodeController: ASTableDataSource {
 			let comment = viewModel.posts.value[indexPath.section].comments.value[indexPath.row-1]
 			return {
 				let node = CommentNode(viewModel: comment)
-				return WrapperCellNode<CommentNode>(wrapped: node, inset: UIEdgeInsets(top: 2, left: 32, bottom: 4, right: 16))
+				return WrapperCellNode<CommentNode>(wrapped: node,
+				                                    inset: UIEdgeInsets(top: 2,
+				                                                        left: 32,
+				                                                        bottom: 4,
+				                                                        right: 32))
 			}
 		}
 

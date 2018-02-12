@@ -18,6 +18,7 @@ public protocol PostLocalProvider {
     func fetchPosts(page: Int, limit: Int) -> SignalProducer<[Post], LocalProviderError>
     
     func save(post: Post) -> SignalProducer<Post, LocalProviderError>
+    func clearAll() -> SignalProducer<Void, LocalProviderError>
 }
 
 public class PostLocalRepository: PostLocalProvider {
@@ -80,6 +81,16 @@ public class PostLocalRepository: PostLocalProvider {
                 default:
                     return SignalProducer<Post, LocalProviderError>(error: error)
                 }
+            }
+    }
+
+    public func clearAll() -> SignalProducer<Void, LocalProviderError> {
+        return SignalProducer<Void, LocalProviderError> { () -> Result<Void, LocalProviderError> in
+                    return Result<Void, NSError>.init(attempt: {
+                        try self.container
+                            .deleteObjects(type: PostMO.self, request: PostMO.requestFetchAllPosts())
+                    })
+                    .mapError { LocalProviderError.persistenceFailure($0) }
             }
     }
 }

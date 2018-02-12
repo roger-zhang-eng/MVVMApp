@@ -35,4 +35,9 @@ public final class DataContainer: NSPersistentContainer {
     public func fetchObjects<T: NSManagedObject>(type: T.Type, request: NSFetchRequest<NSFetchRequestResult>) throws -> [T] {
         return try viewContext.fetch(request) as! [T]
     }
+
+    public func deleteObjects<T: NSManagedObject>(type: T.Type, request:NSFetchRequest<NSFetchRequestResult>) throws {
+        try viewContext
+            .persistentStoreCoordinator?.execute(NSBatchDeleteRequest(fetchRequest: request), with: viewContext)
+    }
 }

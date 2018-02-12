@@ -18,6 +18,7 @@ public protocol UserProvider {
     init(localProvider: UserLocalProvider, remoteProvider: UserRemoteProvider)
     
     func fetchUser(id: Int) -> SignalProducer<User, ProviderError>
+    func clearAll() -> SignalProducer<Void, LocalProviderError>
 }
 
 public class UserRepository: UserProvider {
@@ -42,5 +43,9 @@ public class UserRepository: UserProvider {
                         .mapError { ProviderError.local($0) }
                     }
             }
+    }
+
+    public func clearAll() -> SignalProducer<Void, LocalProviderError> {
+        return localProvider.clearAll()
     }
 }

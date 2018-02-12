@@ -15,6 +15,7 @@ import Result
 public protocol UserLocalProvider {
     func fetchUser(id: Int) -> SignalProducer<User, LocalProviderError>
     func save(user: User) -> SignalProducer<User, LocalProviderError>
+    func clearAll() -> SignalProducer<Void, LocalProviderError>
 }
 
 public class UserLocalRepository: UserLocalProvider {
@@ -62,6 +63,16 @@ public class UserLocalRepository: UserLocalProvider {
                 default:
                     return SignalProducer<User, LocalProviderError>(error: error)
                 }
+        }
+    }
+
+    public func clearAll() -> SignalProducer<Void, LocalProviderError> {
+        return SignalProducer<Void, LocalProviderError> { () -> Result<Void, LocalProviderError> in
+            return Result<Void, NSError>.init(attempt: {
+                try self.container
+                    .deleteObjects(type: UserMO.self, request: UserMO.requestFetchAllUsers())
+            })
+                .mapError { LocalProviderError.persistenceFailure($0) }
         }
     }
 }

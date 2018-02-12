@@ -10,6 +10,11 @@ import CoreData
 import Foundation
 
 public class CommentMO: NSManagedObject {
+    public static func requestFetchAllComments() -> NSFetchRequest<NSFetchRequestResult> {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: String(describing: self))
+        return request
+    }
+
     public static func requestFetchComment(id: Int) -> NSFetchRequest<NSFetchRequestResult> {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: String(describing: self))
         request.predicate = NSPredicate(format: "id == \(id)")

@@ -16,14 +16,21 @@ import ReactiveCocoa
 import ReactiveSwift
 import Result
 import Swinject
+import UIKit
 
 class PostListNodeController: ASViewController<ASTableNode> {
 
 	let viewModel: PostListViewModel!
+    let fetchListDisposable = SerialDisposable()
+    let fetchCommentsDisposable = SerialDisposable()
+    let loadingDisposable = SerialDisposable()
 
 	var loadingIndicator: UIActivityIndicatorView!
 	var loadingBarButtonItem: UIBarButtonItem!
 	var context: ASBatchContext!
+
+    var impactGenerator = UIImpactFeedbackGenerator()
+    var notificationGenerator = UINotificationFeedbackGenerator()
 
 	init() {
 		viewModel = UIApplication.inject(PostListViewModel.self)
@@ -62,7 +69,13 @@ class PostListNodeController: ASViewController<ASTableNode> {
 
 		self.view.backgroundColor = UIColor.flatWhite
 		self.node.contentInset = UIEdgeInsets(top: 4, left: 0, bottom: 12, right: 0)
+
 	}
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        impactGenerator.prepare()
+    }
 
 	func insertSections(newCount: Int) {
 		let indexRange = (viewModel.posts.value.count - newCount..<viewModel.posts.value.count)
@@ -144,18 +157,30 @@ extension PostListNodeController: ASTableDelegate {
 			post.fetchComments.isExecuting.value == false,
 			post.fetchComments.isEnabled.value == true {
 
-
-			loadingIndicator.reactive.isAnimating <~ post
+			loadingDisposable.inner = loadingIndicator.reactive.isAnimating <~ post
 				.fetchComments
 				.isExecuting
 
-			reactive.updateCommentList(section: indexPath.section) <~ post
+			fetchListDisposable.inner = reactive.updateCommentList(section: indexPath.section) <~ post
 				.fetchComments
 				.values
 
 			post.fetchComments
 				.apply()
 				.start()
+
+            post.fetchComments
+                .events
+                .observe({ event in
+                    switch event {
+                    case .value: self.notificationGenerator.notificationOccurred(.success)
+                    case .failed: self.notificationGenerator.notificationOccurred(.error)
+                    default: break
+                    }
+                })
+
+            impactGenerator.impactOccurred()
+            impactGenerator.prepare()
 		}
 	}
 }

@@ -17,6 +17,7 @@ public protocol CommentLocalProvider {
     func fetchComment(id: Int) -> SignalProducer<Comment, LocalProviderError>
     func fetchComments(postId: Int) -> SignalProducer<[Comment], LocalProviderError>
     func save(comment: Comment) -> SignalProducer<Comment, LocalProviderError>
+    func clearAll() -> SignalProducer<Void, LocalProviderError>
 }
 
 public class CommentLocalRepository: CommentLocalProvider {
@@ -83,6 +84,16 @@ public class CommentLocalRepository: CommentLocalProvider {
                 default:
                     return SignalProducer<Comment, LocalProviderError>(error: error)
                 }
+        }
+    }
+
+    public func clearAll() -> SignalProducer<Void, LocalProviderError> {
+        return SignalProducer<Void, LocalProviderError> { () -> Result<Void, LocalProviderError> in
+            return Result<Void, NSError>.init(attempt: {
+                try self.container
+                    .deleteObjects(type: CommentMO.self, request: CommentMO.requestFetchAllComments())
+            })
+                .mapError { LocalProviderError.persistenceFailure($0) }
         }
     }
 }

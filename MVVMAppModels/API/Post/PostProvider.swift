@@ -19,6 +19,7 @@ public protocol PostProvider {
     
     func fetchPost(id: Int) -> SignalProducer<Post, ProviderError>
     func fetchPosts(page: Int, limit: Int) -> SignalProducer<[Post], ProviderError>
+    func clearAll() -> SignalProducer<Void, LocalProviderError>
 }
 
 public class PostRepository: PostProvider {
@@ -89,6 +90,10 @@ public class PostRepository: PostProvider {
             .flatMapError { (error: ProviderError) -> SignalProducer<[Post], ProviderError> in
                 return remoteProducer
             }
+    }
+
+    public func clearAll() -> SignalProducer<Void, LocalProviderError> {
+        return localProvider.clearAll()
     }
     
 }

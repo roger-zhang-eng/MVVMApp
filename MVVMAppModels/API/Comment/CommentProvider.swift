@@ -19,6 +19,7 @@ public protocol CommentProvider {
     
     func fetchComment(id: Int) -> SignalProducer<Comment, ProviderError>
     func fetchComments(postId: Int) -> SignalProducer<[Comment], ProviderError>
+    func clearAll() -> SignalProducer<Void, LocalProviderError>
 }
 
 public class CommentRepository: CommentProvider {
@@ -89,5 +90,9 @@ public class CommentRepository: CommentProvider {
             .flatMapError { (error: ProviderError) -> SignalProducer<[Comment], ProviderError> in
                 return remoteProducer
             }
+    }
+
+    public func clearAll() -> SignalProducer<Void, LocalProviderError> {
+        return localProvider.clearAll()
     }
 }

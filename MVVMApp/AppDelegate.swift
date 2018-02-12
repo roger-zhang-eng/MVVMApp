@@ -86,12 +86,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             .inObjectScope(.container)
 
-
-//		UINavigationBar.appearance().tintColor = UIColor(hexString: "#FAFAFA")
 		UINavigationBar.appearance().titleTextAttributes = [
 			NSAttributedStringKey.foregroundColor : UIColor.flatMintDark
 		]
-//		UINavigationBar.appearance().barTintColor = UIColor.flatMintDark
 
 		let asyncNavigationController = UINavigationController(rootViewController: PostListNodeController())
 
@@ -103,6 +100,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		ASDisableLogging()
         
         return true
+    }
+
+    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+        guard let action = TouchAction(rawValue: shortcutItem.type) else {
+            return completionHandler(false)
+        }
+
+        switch action {
+        case .clearCache:
+            guard let postProvider = container.resolve(PostProvider.self),
+                let userProvider = container.resolve(UserProvider.self),
+                let commentProvider = container.resolve(CommentProvider.self) else {
+                    return completionHandler(false)
+            }
+
+            SignalProducer
+                .zip(
+                    postProvider.clearAll(),
+                    commentProvider.clearAll(),
+                    userProvider.clearAll()
+                )
+                .startWithResult({ result in
+                    switch result {
+                    case .success: completionHandler(true)
+                    case .failure: completionHandler(false)
+                    }
+                })
+        }
+    }
+}
+
+extension AppDelegate {
+    enum TouchAction: String {
+        case clearCache = "com.gkaimakas.mvvm.clearCache"
     }
 }
 

@@ -86,18 +86,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             .inObjectScope(.container)
 
-		UINavigationBar.appearance().titleTextAttributes = [
-			NSAttributedStringKey.foregroundColor : UIColor.flatMintDark
-		]
+        UINavigationBar.appearance().titleTextAttributes = [
+            NSAttributedStringKey.foregroundColor : UIColor.flatMintDark
+        ]
 
-		let asyncNavigationController = UINavigationController(rootViewController: PostListNodeController())
+        let asyncNavigationController = UINavigationController(rootViewController: PostListNodeController())
 
-		window = UIWindow()
-		window?.backgroundColor = .white
-		window?.rootViewController = asyncNavigationController
-		window?.makeKeyAndVisible()
+        window = UIWindow()
+        window?.backgroundColor = .white
+        window?.rootViewController = asyncNavigationController
+        window?.makeKeyAndVisible()
 
-		ASDisableLogging()
+        ASDisableLogging()
         
         return true
     }

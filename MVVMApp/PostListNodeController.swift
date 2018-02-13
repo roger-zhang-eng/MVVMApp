@@ -21,9 +21,6 @@ import UIKit
 class PostListNodeController: ASViewController<ASTableNode> {
 
     let viewModel: PostListViewModel!
-    let fetchListDisposable = SerialDisposable()
-    let fetchCommentsDisposable = SerialDisposable()
-    let loadingDisposable = SerialDisposable()
 
     var loadingIndicator: UIActivityIndicatorView!
     var loadingBarButtonItem: UIBarButtonItem!
@@ -157,11 +154,11 @@ extension PostListNodeController: ASTableDelegate {
             post.fetchComments.isExecuting.value == false,
             post.fetchComments.isEnabled.value == true {
 
-            loadingDisposable.inner = loadingIndicator.reactive.isAnimating <~ post
+            loadingIndicator.reactive.isAnimating <~ post
                 .fetchComments
                 .isExecuting
 
-            fetchListDisposable.inner = reactive.updateCommentList(section: indexPath.section) <~ post
+            reactive.updateCommentList(section: indexPath.section) <~ post
                 .fetchComments
                 .values
 
@@ -177,6 +174,8 @@ extension PostListNodeController: ASTableDelegate {
                     case .failed: self.notificationGenerator.notificationOccurred(.error)
                     default: break
                     }
+
+                    self.notificationGenerator.prepare()
                 })
 
             impactGenerator.impactOccurred()
